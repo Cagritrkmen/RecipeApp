@@ -43,3 +43,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Used Tools
 
 Material UI
+
+Json Server
+
+Redux Toolkit
+
+Axios

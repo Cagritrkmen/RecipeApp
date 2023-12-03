@@ -1,0 +1,58 @@
+{
+    "recipes": [
+      {
+        "id": 1,
+        "image":"https://i.pinimg.com/736x/8d/8f/28/8d8f28519f9b73bd60298c83c315f06c.jpg",
+        "title": "Mercimek Çorbası",
+        "category": "Çorba",
+        "difficulty": "Kolay",
+        "ingredients": [
+          "1 su bardağı kırmızı mercimek",
+          "1 adet soğan",
+          "1 adet havuç",
+          "1 yemek kaşığı un",
+          "1 yemek kaşığı tereyağı",
+          "7 su bardağı su",
+          "Tuz, karabiber"
+        ],
+        "instructions": [
+          "Mercimeği yıkayıp süzün.",
+          "Soğanı ve havucu küçük küçük doğrayın.",
+          "Tencerede tereyağını eritin, unu ekleyip kavurun.",
+          "Doğradığınız sebzeleri ekleyip kavurmaya devam edin.",
+          "Mercimeği ekleyin ve suyunu ilave edin.",
+          "Mercimekler yumuşayana kadar pişirin.",
+          "Blendırdan geçirip servis yapın."
+        ],
+        "rating": 3
+      },
+      {
+        "id": 2,
+        "title": "Fırında Tavuk",
+        "category": "Ana Yemek",
+        "difficulty": "Orta",
+        "ingredients": [
+          "4 adet tavuk but",
+          "2 adet limon",
+          "4 diş sarımsak",
+          "1 yemek kaşığı zeytinyağı",
+          "Kekik, tuz, karabiber"
+        ],
+        "instructions": [
+          "Tavuk butlarını yıkayıp temizleyin.",
+          "Limon suyu, zeytinyağı, sarımsak ve baharatları bir kasede karıştırın.",
+          "Tavukları bu karışımla iyice ovun.",
+          "Fırın tepsisine yerleştirin ve önceden ısıtılmış fırında pişirin."
+        ],
+        "rating": 5
+      }
+    ],
+    "categories": [
+      "Çorba",
+      "Ana Yemek",
+      "Tatlı",
+      "Salata",
+      "Atıştırmalık"
+    ]
+  }
+  

@@ -1,9 +1,14 @@
 import DashbordLayout from '@/components/DashboardLayout'
 import '@/styles/globals.css'
+import { Provider } from 'react-redux'
+import { store } from '../../store/store'
 
 export default function App({ Component, pageProps }) {
-  return( 
-  <DashbordLayout>
-    <Component {...pageProps} />
-  </DashbordLayout>)
+  return (
+    <Provider store={store}>
+      <DashbordLayout>
+        <Component {...pageProps} />
+      </DashbordLayout>
+    </Provider>)
+  
 }
