@@ -105,7 +105,7 @@ const Recipes = () => {
                       variant="contained"
                       color="primary"
                       size="large"
-                      onClick={() => router.push(`/recipes/${recipe.id}`)}
+                      onClick={() => router.push(`/Recipes/${recipe.id}`)}
                     >
                       Detaya Git
                     </Button>

@@ -72,7 +72,7 @@ const recipeSlice = createSlice({
           state.loadingRecipeDetails = true;
         })
         .addCase(fetchRecipeDetails.fulfilled, (state, action) => {
-          state.productDetails = action.payload;
+          state.recipeDetails = action.payload;
           state.loadingRecipeDetails = false;
         })
         .addCase(fetchRecipeDetails.rejected, (state, action) => {
