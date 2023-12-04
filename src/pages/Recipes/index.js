@@ -74,11 +74,11 @@ const Recipes = () => {
               recipes.map((recipe) => (
                 <Card
                   key={recipe.id}
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ maxWidth: 500, cursor: 'pointer' }}
                 >
                   <CardMedia
                     component="img"
-                    height="140"
+                    height="150"
                     image={recipe.image}
                     alt={recipe.title}
                   />
@@ -100,7 +100,7 @@ const Recipes = () => {
                       </Typography>
                     </Box>
                   </CardContent>
-                  <Stack direction="row" justifyContent="center" mt={2}>
+                  <Stack direction="row" justifyContent="center">
                     <Button
                       variant="contained"
                       color="primary"
