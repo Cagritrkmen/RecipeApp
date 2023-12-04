@@ -13,8 +13,11 @@ import {
   Typography,
 } from '@mui/material';
 import CategoryList from './components/CategoryList';
-import { fetchRecipesByCategory } from '../../../store/recipeSlice';
+import { fetchRecipes, fetchRecipesByCategory } from '../../../store/recipeSlice';
 import { fetchCategories } from '../../../store/categorySlice';
+import { IconButton } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Recipes = () => {
   const router = useRouter();
@@ -38,9 +41,10 @@ const Recipes = () => {
     },
     [selectedCategory, dispatch]
   );
+  
 
   useEffect(() => {
-    dispatch(fetchRecipesByCategory(defaultCategory));
+    dispatch(fetchRecipes());
   }, [dispatch]);
 
   return (
@@ -48,7 +52,7 @@ const Recipes = () => {
       {loadingCategories ? (
         <Skeleton variant="rectangular" width={206} height={338} />
       ) : (
-        <Stack direction="row" spacing={3}>
+        <Stack direction="row" spacing={10}>
           <CategoryList
             categories={categories}
             handleCategoryClick={handleCategoryClick}
@@ -73,8 +77,9 @@ const Recipes = () => {
             ) : (
               recipes.map((recipe) => (
                 <Card
+
                   key={recipe.id}
-                  sx={{ maxWidth: 500, cursor: 'pointer' }}
+                  sx={{ width: 250 }}
                 >
                   <CardMedia
                     component="img"
@@ -83,7 +88,7 @@ const Recipes = () => {
                     alt={recipe.title}
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h6" component="div">
+                    <Typography mb={3} gutterBottom variant="h6" component="div">
                       {recipe.title}
                     </Typography>
                     {recipe.category}
@@ -91,7 +96,7 @@ const Recipes = () => {
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        mt: 2,
+                        mb: 2,
                       }}
                     >
                       <Rating name="read-only" value={recipe.rating} readOnly />
@@ -100,8 +105,9 @@ const Recipes = () => {
                       </Typography>
                     </Box>
                   </CardContent>
-                  <Stack direction="row" justifyContent="center">
+                  <Stack direction="row" justifyContent="space-around" mb={3} >
                     <Button
+
                       variant="contained"
                       color="primary"
                       size="large"
@@ -109,6 +115,9 @@ const Recipes = () => {
                     >
                       Detaya Git
                     </Button>
+                    <IconButton sx={{color:"#dd33fa",size:"large" }}>
+                          <FavoriteBorderIcon />
+                    </IconButton>
                   </Stack>
                 </Card>
               ))
