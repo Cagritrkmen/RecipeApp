@@ -19,9 +19,9 @@ const RecipeCard = ({handleFavoriteToggle,isFavorite,recipe}) => {
     const router=useRouter()
     return (
         <Card
-
+            
             key={recipe.id}
-            sx={{ width: 250 }}
+            sx={{ width: 250,height:380 }}
         >
             <CardMedia
                 component="img"
