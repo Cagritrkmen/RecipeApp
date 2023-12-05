@@ -41,6 +41,9 @@ const Recipes = () => {
         setSelectedCategory(category);
         dispatch(fetchRecipesByCategory(category));
       }
+      if(category =="Tümü"){
+        dispatch(fetchRecipes(category))
+      }
     },
     [selectedCategory, dispatch]
   );
