@@ -39,6 +39,14 @@ export const fetchRecipeDetails = createAsyncThunk(
   }
 );
 
+export const searchRecipes = createAsyncThunk(
+  'search/searchRecipes',
+  async (search) => {
+      const response = await axios.get( `http://localhost:3001/recipes?q=${search}`);
+      return response.data;
+    }
+);
+
 const recipeSlice = createSlice({
     name: 'recipes',
     initialState,
@@ -78,6 +86,17 @@ const recipeSlice = createSlice({
         .addCase(fetchRecipeDetails.rejected, (state, action) => {
           state.error = action.error.message;
           state.loadingRecipeDetails = false;
+        })
+        .addCase(searchRecipes.pending, (state) => {
+          state.loadingRecipes = true;
+        })
+        .addCase(searchRecipes.fulfilled, (state, action) => {
+          state.recipes = action.payload;
+          state.loadingRecipes = false;
+        })
+        .addCase(searchRecipes.rejected, (state, action) => {
+          state.error = action.error.message;
+          state.loadingRecipes = false;
         });
     },
   });

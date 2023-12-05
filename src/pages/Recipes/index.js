@@ -17,6 +17,7 @@ import { fetchRecipes, fetchRecipesByCategory } from '../../../store/recipeSlice
 import { fetchCategories } from '../../../store/categorySlice';
 import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import SearchBar from '@/components/SearchBar';
 
 const Recipes = () => {
   const [favorites, setFavorites] = useState([]);
@@ -68,10 +69,14 @@ const Recipes = () => {
         <Skeleton variant="rectangular" width={206} height={338} />
       ) : (
         <Stack direction="row" spacing={10}>
-          <CategoryList
-            categories={categories}
-            handleCategoryClick={handleCategoryClick}
-          />
+          <Stack>
+            <SearchBar></SearchBar>
+            <CategoryList
+              categories={categories}
+              handleCategoryClick={handleCategoryClick}
+            />
+          </Stack>
+
 
           <Stack
             spacing={{ xs: 1, sm: 3, md: 3 }}
@@ -136,7 +141,7 @@ const Recipes = () => {
                       >
 
                         <FavoriteIcon
-                          sx={{fontSize:"40px"}}
+                          sx={{ fontSize: "40px" }}
                           color={isFavorite(recipe.id) ? 'error' : 'disabled'}
                         />
                       </IconButton>
