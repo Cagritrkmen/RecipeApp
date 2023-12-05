@@ -13,21 +13,22 @@ import {
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { fetchRecipes } from '../../../store/recipeSlice';
+import RecipeCard from '@/components/RecipeCard';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const { recipes } = useSelector((state) => state.recipes);
   const router = useRouter();
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
-        console.log('storedFavorites', storedFavorites)
+      console.log('storedFavorites', storedFavorites)
       setFavorites(JSON.parse(storedFavorites));
     }
     dispatch(fetchRecipes());
-    
+
   }, []);
 
   const handleFavoriteToggle = (id) => {
@@ -59,39 +60,7 @@ const Favorites = () => {
       ) : (
         <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
           {favoriteRecipes.map((recipe) => (
-            <Card key={recipe.id} sx={{ width: 250, marginBottom: 3 }}>
-              <CardMedia
-                component="img"
-                height="150"
-                image={recipe.image}
-                alt={recipe.title}
-              />
-              <CardContent>
-                <Typography mb={3} gutterBottom variant="h6" component="div">
-                  {recipe.title}
-                </Typography>
-                {recipe.category}
-              </CardContent>
-              <Stack direction="row" justifyContent="space-around" mb={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  onClick={() => router.push(`/Recipes/${recipe.id}`)}
-                >
-                  Detaya Git
-                </Button>
-                <IconButton
-                  aria-label="add to favorites"
-                  onClick={() => handleFavoriteToggle(recipe.id)}
-                >
-                  <FavoriteIcon
-                    sx={{ fontSize: '40px' }}
-                    color={isFavorite(recipe.id) ? 'error' : 'disabled'}
-                  />
-                </IconButton>
-              </Stack>
-            </Card>
+            <RecipeCard isFavorite={isFavorite} recipe={recipe} handleFavoriteToggle={handleFavoriteToggle} />
           ))}
         </Stack>
       )}
