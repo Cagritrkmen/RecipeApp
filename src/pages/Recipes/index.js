@@ -89,9 +89,9 @@ const Recipes = () => {
             flexWrap="wrap"
           >
             {loadingRecipes ? (
-              Array.from(new Array(6)).map((_, index) => (
-                <Card key={index} sx={{ width: '345px' }}>
-                  <Skeleton variant="rectangular" width="100%" height={140} />
+              Array.from(new Array(8)).map((_, index) => (
+                <Card key={index} sx={{ width: '250px' }}>
+                  <Skeleton variant="rectangular" width="100%" height={150} />
                   <CardContent>
                     <Skeleton variant="text" height={140} />
                     <Skeleton variant="text" width="60%" />
