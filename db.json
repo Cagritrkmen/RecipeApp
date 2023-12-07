@@ -218,10 +218,19 @@
   "users": [
     {
       "username": "cagri",
+      "email": "123@gmail.com",
+      "password": "123efsane123",
+      "passwordConfirm": "123efsane123",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "username": "cagri123",
       "email": "cagri@gmail.com",
       "password": "123efsane123",
       "passwordConfirm": "123efsane123",
-      "id": 1
+      "role": "user",
+      "id": 4
     }
   ]
 }

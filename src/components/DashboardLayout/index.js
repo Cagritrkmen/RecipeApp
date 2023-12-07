@@ -83,16 +83,16 @@ function DashbordLayout({ children }) {
 
                         <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                                 onClick={() => router.push(`/Recipes`)}
+                                 onClick={() => router.push(`/Login`)}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >
-                                    {"GİRİŞ"}
+                                    {"Giriş Yap"}
                                 </Button>
                                 <Button
-                                     onClick={() => router.push(`/Favorites`)}
+                                     onClick={() => router.push(`/Register`)}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >
-                                    {"ÇIKIŞ"}
+                                    {"Kayıt Ol"}
                                 </Button>
                         </Box>
                     </Toolbar>

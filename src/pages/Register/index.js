@@ -14,6 +14,7 @@ const Register = () => {
     email: '',
     password: '',
     passwordConfirm: '',
+    role: 'user',
   };
 
   const validationSchema = Yup.object().shape({
