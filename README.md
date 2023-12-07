@@ -49,3 +49,7 @@ Json Server
 Redux Toolkit
 
 Axios
+
+Yup
+
+Formik

@@ -45,7 +45,7 @@
         "Fırın tepsisine yerleştirin ve önceden ısıtılmış fırında pişirin."
       ],
       "rating": 5,
-      "image":"https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 3,
@@ -67,7 +67,7 @@
         "Kıvam alana kadar pişirip servis yapın."
       ],
       "rating": 4,
-      "image":"https://images.pexels.com/photos/13976322/pexels-photo-13976322.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/13976322/pexels-photo-13976322.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 4,
@@ -87,7 +87,7 @@
         "Üzerine limon sıkıp taze kekik veya roka ile servis yapın."
       ],
       "rating": 5,
-      "image":"https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 5,
@@ -110,7 +110,7 @@
         "Önceden ısıtılmış 180 derece fırında altın rengi olana kadar pişirin."
       ],
       "rating": 4,
-      "image":"https://media.istockphoto.com/id/1473426900/tr/foto%C4%9Fraf/apple-carrot-muffins.jpg?s=612x612&w=0&k=20&c=m8Ql-mnc1C4od1qKMqYdzTcMlqjmzLyYCQs3m5sqBJA="
+      "image": "https://media.istockphoto.com/id/1473426900/tr/foto%C4%9Fraf/apple-carrot-muffins.jpg?s=612x612&w=0&k=20&c=m8Ql-mnc1C4od1qKMqYdzTcMlqjmzLyYCQs3m5sqBJA="
     },
     {
       "id": 6,
@@ -132,7 +132,7 @@
         "Doğranmış sebzeleri karışıma ekleyip harmanlayın ve servis yapın."
       ],
       "rating": 5,
-      "image":"https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 7,
@@ -154,7 +154,7 @@
         "Üzerine taze kişniş veya maydanoz serperek servis yapın."
       ],
       "rating": 5,
-      "image":"https://images.pexels.com/photos/1321942/pexels-photo-1321942.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/1321942/pexels-photo-1321942.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 8,
@@ -180,7 +180,7 @@
         "Fırından çıkarıp soğuduktan sonra dilimleyerek servis yapın."
       ],
       "rating": 5,
-      "image":"https://images.pexels.com/photos/15511433/pexels-photo-15511433/free-photo-of-cikolatali-kapkek.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/15511433/pexels-photo-15511433/free-photo-of-cikolatali-kapkek.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": 9,
@@ -204,11 +204,8 @@
         "Hummusu, dilimlenmiş sebzeler, pide veya kraker ile servis yapın."
       ],
       "rating": 4,
-      "image":"https://images.pexels.com/photos/6419746/pexels-photo-6419746.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/6419746/pexels-photo-6419746.jpeg?auto=compress&cs=tinysrgb&w=600"
     }
-    
-    
-    
   ],
   "categories": [
     "Tümü",
@@ -217,6 +214,14 @@
     "Tatlı",
     "Salata",
     "Atıştırmalık"
-    
+  ],
+  "users": [
+    {
+      "username": "cagri",
+      "email": "cagri@gmail.com",
+      "password": "123efsane123",
+      "passwordConfirm": "123efsane123",
+      "id": 1
+    }
   ]
 }
