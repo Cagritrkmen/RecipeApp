@@ -1,26 +1,25 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux'; // Redux'tan state almak için kullanılan bir fonksiyon
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import logo from "../../../public/logo.png"
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import logo from "../../../public/logo.png";
 
-
-
-function DashbordLayout({ children }) {
-   
+function DashboardLayout({ children }) {
     const router = useRouter();
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn); // Redux'tan isLoggedIn durumunu al
 
+    const handleProfileClick = () => {
+        // Kullanıcı profiline tıklanınca yapılacak işlemler buraya gelecek
+        router.push(`/UserDetails`); // Örnek olarak Profile sayfasına yönlendirme yapılıyor
+    };
 
     return (
         <Box>
@@ -41,59 +40,64 @@ function DashbordLayout({ children }) {
                                 textDecoration: 'none',
                                 display: 'flex',
                                 alignItems: 'center',
-                                cursor:"pointer",
-                                
+                                cursor: "pointer",
                             }}
-                            onClick={()=>(router.push('/'))}
-                            
+                            onClick={() => (router.push('/'))}
                         >
                             <Image src={logo} alt="My Logo" width={60} height={60} />
-
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
-                                aria-label="account of current user"
+                                aria-label="menu"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 color="inherit"
                             >
                                 <MenuIcon />
                             </IconButton>
-                            
                         </Box>
-                        
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            
-                                <Button
-                                 onClick={() => router.push(`/Recipes`)}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {"Yemek Tarifleri"}
-                                </Button>
-                                <Button
-                                     onClick={() => router.push(`/Favorites`)}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {"Favoriler"}
-                                </Button>
+                            <Button
+                                onClick={() => router.push(`/Recipes`)}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                {"Yemek Tarifleri"}
+                            </Button>
+                            <Button
+                                onClick={() => router.push(`/Favorites`)}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                {"Favoriler"}
+                            </Button>
                         </Box>
 
                         <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-                        <Button
-                                 onClick={() => router.push(`/Login`)}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {"Giriş Yap"}
-                                </Button>
+                            {isLoggedIn ? (
                                 <Button
-                                     onClick={() => router.push(`/Register`)}
+                                    onClick={handleProfileClick}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >
-                                    {"Kayıt Ol"}
+                                    {"Profil"}
                                 </Button>
+                            ) : (
+                                <>
+                                    <Button
+                                        onClick={() => router.push(`/Login`)}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {"Giriş Yap"}
+                                    </Button>
+                                    <Button
+                                        onClick={() => router.push(`/Register`)}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {"Kayıt Ol"}
+                                    </Button>
+                                </>
+                            )}
                         </Box>
                     </Toolbar>
                 </Container>
@@ -102,7 +106,7 @@ function DashbordLayout({ children }) {
                 {children}
             </Box>
         </Box>
-
     );
 }
-export default DashbordLayout;
+
+export default DashboardLayout;

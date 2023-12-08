@@ -7,10 +7,12 @@ import TextField from '@mui/material/TextField';
 import { loginUser } from '../../../store/userSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 
 const Login = () => {
   const dispatch = useDispatch();
   const { error } = useSelector((state) => state.user);
+  const router = useRouter();
 
   const initialValues = {
     username: '',
@@ -29,6 +31,9 @@ const Login = () => {
   
       if (response.type=='user/loginUser/fulfilled') {
         toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${response.payload.username} :)`);
+        setTimeout(() => {
+          router.push("/Recipes");
+        }, 3000);
 
       } else {
         toast.error(response.payload);

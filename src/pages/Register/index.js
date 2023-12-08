@@ -6,6 +6,7 @@ import { Button, TextField, Typography, Container, Box } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import validationSchema from './validationSchema';
+import { useRouter } from 'next/router';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,19 @@ const Register = () => {
     role: 'user',
   };
 
+  const router = useRouter();
 
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await dispatch(registerUser(values));
       console.log(response);
-      if(response.type=="user/registerUser/fulfilled")
-      toast.success('Kayıt Başarılı');
+      if(response.type=="user/registerUser/fulfilled"){
+        toast.success('Kayıt Başarılı');
+        setTimeout(() => {
+          router.push("/Login");
+        }, 3000);
+      }
       else{
         toast.error("Kullanıcı zaten mevcut");
       }
