@@ -1,13 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../store/userSlice';
 import { Button, TextField, Typography, Container, Box } from '@mui/material';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import validationSchema from './validationSchema';
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.user);
 
   const initialValues = {
     username: '',
@@ -17,23 +18,29 @@ const Register = () => {
     role: 'user',
   };
 
-  const validationSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
-    passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
-  });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    dispatch(registerUser(values));
-    setSubmitting(false);
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      const response = await dispatch(registerUser(values));
+      console.log(response);
+      if(response.type=="user/registerUser/fulfilled")
+      toast.success('Kayıt Başarılı');
+      else{
+        toast.error("Kullanıcı zaten mevcut");
+      }
+    } catch (error) {
+      
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <Container component="main" maxWidth="xs" >
-      <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'background.paper', p: 4, borderRadius:"20px"}}>
+    <Container component="main" maxWidth="xs">
+      <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'background.paper', p: 4, borderRadius: "20px" }}>
         <Typography component="h1" variant="h5">
-          Register
+          Kayıt Ol
         </Typography>
         <Formik
           initialValues={initialValues}
@@ -48,7 +55,7 @@ const Register = () => {
                     {...field}
                     margin="normal"
                     fullWidth
-                    label="Username"
+                    label="Kullanıcı Adı"
                     type="text"
                     error={form.errors.username && form.touched.username}
                     helperText={<ErrorMessage name="username" />}
@@ -76,7 +83,7 @@ const Register = () => {
                     {...field}
                     margin="normal"
                     fullWidth
-                    label="Password"
+                    label="Şifre"
                     type="password"
                     error={form.errors.password && form.touched.password}
                     helperText={<ErrorMessage name="password" />}
@@ -90,14 +97,13 @@ const Register = () => {
                     {...field}
                     margin="normal"
                     fullWidth
-                    label="Confirm Password"
+                    label="Şifre Tekrar"
                     type="password"
                     error={form.errors.passwordConfirm && form.touched.passwordConfirm}
                     helperText={<ErrorMessage name="passwordConfirm" />}
                   />
                 )}
               </Field>
-
               <Button
                 type="submit"
                 fullWidth
@@ -108,10 +114,10 @@ const Register = () => {
               >
                 Register
               </Button>
-              {error && <Typography color="error">{error}</Typography>}
             </Form>
           )}
         </Formik>
+        <ToastContainer position='bottom-right' /> 
       </Box>
     </Container>
   );

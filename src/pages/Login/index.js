@@ -18,8 +18,8 @@ const Login = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    password: Yup.string().required('Password is required'),
+    username: Yup.string().required('Kullanıcı adı zorulu'),
+    password: Yup.string().required('Şifre zorunlu'),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -28,7 +28,7 @@ const Login = () => {
       console.log(response); // Yanıtı kontrol etmek için loglama
   
       if (response.type=='user/loginUser/fulfilled') {
-        toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${response.payload.username}!`);
+        toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${response.payload.username} :)`);
 
       } else {
         toast.error(response.payload);
@@ -43,7 +43,7 @@ const Login = () => {
     <Container component="main" maxWidth="xs">
       <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'white', p: 4, borderRadius: "20px" }}>
         <Typography component="h1" variant="h5">
-          Login
+          Giriş Yap
         </Typography>
         <Formik
           initialValues={initialValues}
@@ -58,7 +58,7 @@ const Login = () => {
                     {...field}
                     margin="normal"
                     fullWidth
-                    label="Username"
+                    label="Kullanıcı Adı"
                     type="text"
                     error={form.errors.username && form.touched.username}
                     helperText={<ErrorMessage name="username" />}
@@ -72,7 +72,7 @@ const Login = () => {
                     {...field}
                     margin="normal"
                     fullWidth
-                    label="Password"
+                    label="Şifre"
                     type="password"
                     error={form.errors.password && form.touched.password}
                     helperText={<ErrorMessage name="password" />}
@@ -93,7 +93,7 @@ const Login = () => {
             </Form>
           )}
         </Formik>
-        <ToastContainer /> {/* Toast bildirimlerinin gösterileceği bileşen */}
+        <ToastContainer position='bottom-right'/> 
       </Box>
     </Container>
   );
