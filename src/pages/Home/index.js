@@ -18,8 +18,8 @@ const Home = () => {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        margin: '0', // Sayfanın kenar boşluklarını kaldırır
-        padding: '0', // İçeriğin kenar boşluklarını kaldırır
+        margin: '0', 
+        padding: '0', 
       }}
     >
       <Box sx={{ textAlign: 'center', color: 'white' }}>

@@ -52,7 +52,6 @@ const recipeSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-      //categories loading states
       builder
         .addCase(fetchRecipesByCategory.pending, (state) => {
           state.loadingRecipes = true;
@@ -65,7 +64,7 @@ const recipeSlice = createSlice({
           state.loadingRecipes = false;
           state.error = action.error.message;
         })
-        .addCase(fetchRecipes.pending, (state) => { // <-- Added dot (.) here
+        .addCase(fetchRecipes.pending, (state) => { 
           state.loadingRecipes = true;
         })
         .addCase(fetchRecipes.fulfilled, (state, action) => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux'; // Redux'tan state almak için kullanılan bir fonksiyon
+import { useSelector } from 'react-redux'; 
 import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,11 +14,11 @@ import logo from "../../../public/logo.png";
 
 function DashboardLayout({ children }) {
     const router = useRouter();
-    const isLoggedIn = useSelector(state => state.user.isLoggedIn); // Redux'tan isLoggedIn durumunu al
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn); 
 
     const handleProfileClick = () => {
-        // Kullanıcı profiline tıklanınca yapılacak işlemler buraya gelecek
-        router.push(`/UserDetails`); // Örnek olarak Profile sayfasına yönlendirme yapılıyor
+      
+        router.push(`/UserDetails`); 
     };
 
     return (

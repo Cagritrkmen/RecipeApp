@@ -27,7 +27,7 @@ const Login = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await dispatch(loginUser(values));
-      console.log(response); // Yanıtı kontrol etmek için loglama
+      console.log(response); 
   
       if (response.type=='user/loginUser/fulfilled') {
         toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${response.payload.username} :)`);
