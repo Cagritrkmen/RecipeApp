@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../store/userSlice';
@@ -20,27 +20,22 @@ const Register = () => {
   };
 
   const router = useRouter();
+  const { isRegister } = useSelector((state) => state.user);
 
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      const response = await dispatch(registerUser(values));
-      console.log(response);
-      if(response.type=="user/registerUser/fulfilled"){
-        toast.success('Kayıt Başarılı');
-        setTimeout(() => {
-          router.push("/Login");
-        }, 3000);
-      }
-      else{
-        toast.error("Kullanıcı zaten mevcut");
-      }
-    } catch (error) {
-      
-    } finally {
-      setSubmitting(false);
-    }
+    await dispatch(registerUser(values));
+    setSubmitting(false);
   };
+
+  useEffect(() => {
+    if (isRegister) {
+      setTimeout(()=>{
+        router.push('/Login');
+      },2000)
+      
+    }
+  }, [isRegister, router]);
 
   return (
     <Container component="main" maxWidth="xs">

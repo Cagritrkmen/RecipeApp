@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,8 +11,7 @@ import { useRouter } from 'next/router';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.user);
-  const router = useRouter();
+  const { isLoggedIn } = useSelector((state) => state.user);
 
   const initialValues = {
     username: '',
@@ -20,30 +19,25 @@ const Login = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required('Kullanıcı adı zorulu'),
+    username: Yup.string().required('Kullanıcı adı zorunlu'),
     password: Yup.string().required('Şifre zorunlu'),
   });
+  const router = useRouter()
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      const response = await dispatch(loginUser(values));
-      console.log(response); 
-  
-      if (response.type=='user/loginUser/fulfilled') {
-        toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${response.payload.username} :)`);
-        setTimeout(() => {
-          router.push("/Recipes");
-        }, 3000);
-
-      } else {
-        toast.error(response.payload);
-      }
-    } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setSubmitting(false);
-    }
+    await dispatch(loginUser(values));
+    setSubmitting(false);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setTimeout(()=>{
+        router.push('/Recipes');
+      },2000)
+      
+    }
+  }, [isLoggedIn, router]);
+
   return (
     <Container component="main" maxWidth="xs">
       <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'white', p: 4, borderRadius: "20px" }}>
@@ -98,7 +92,7 @@ const Login = () => {
             </Form>
           )}
         </Formik>
-        <ToastContainer position='bottom-right'/> 
+        <ToastContainer position='bottom-right'/>
       </Box>
     </Container>
   );

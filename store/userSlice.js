@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { toast} from 'react-toastify';
+
+
 
 const initialState = {
   user: null,
   isLoggedIn: false,
   error: null,
+  isRegister: false,
 };
 
 
@@ -16,7 +21,7 @@ export const registerUser = createAsyncThunk(
       const existingUser = existingUsers.data.find(user => user.username === userData.username);
 
       if (existingUser) {
-        return rejectWithValue('Username already exists');
+        return rejectWithValue('Kullanıcı adı zaten kullanımda');
       }
 
       const response = await axios.post(
@@ -46,7 +51,7 @@ export const loginUser = createAsyncThunk(
         throw new Error('Invalid credentials');
       }
     } catch (error) {
-      return rejectWithValue("Hatalı kullanıcı adı veya şifre");
+      return rejectWithValue(error.response.data.error);
     }
   }
 );
@@ -63,17 +68,25 @@ const userSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = false;
         state.error = null;
+        state.isRegister= true;
+        toast.success(`Başarıyla kayıt oldunuz. Login sayfasına yönlendiriliyorsunuz`);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.error.message;
+        state.isRegister= false;
+        toast.error(`Kullanıcı adı zaten kullanımda`);
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.error = null;
+        toast.success(`Başarıyla giriş yaptınız. Hoşgeldiniz ${action.payload.username} :)`);
+
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.error.message;
+        toast.error(`Hatalı kullanıcı adı veya şifre`);
+        ;
       });
   },
 });
