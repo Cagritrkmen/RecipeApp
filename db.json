@@ -205,6 +205,32 @@
       ],
       "rating": 4,
       "image": "https://images.pexels.com/photos/6419746/pexels-photo-6419746.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Mantar Sote",
+      "category": "Ana Yemek",
+      "difficulty": "Orta",
+      "ingredients": [
+        "500 gram mantar (temizlenmiş ve dilimlenmiş)",
+        "1 adet büyük soğan (doğranmış)",
+        "2 adet domates (rendelenmiş)",
+        "2 diş sarımsak (ince doğranmış)",
+        "2 yemek kaşığı zeytinyağı",
+        "1 çay kaşığı toz biber",
+        "1 çay kaşığı tuz",
+        "Taze kişniş veya maydanoz (servis için)"
+      ],
+      "instructions": [
+        "Tencereye zeytinyağını ekleyin ve ısıtın.",
+        "Doğranmış soğanı ekleyip, şeffaflaşana kadar kavurun.",
+        "İnce dilimlenmiş mantarları ekleyin, suyunu salıp çekene kadar pişirin.",
+        "Rendelenmiş domates ve ince doğranmış sarımsakları ilave edin, karıştırın.",
+        "Tuz ve toz biber ekleyin, karıştırıp, kısık ateşte 10-15 dakika pişirin.",
+        "Pişen mantar soteyi servis tabağına alın ve üzerine taze kişniş veya maydanoz ile süsleyerek sıcak olarak servis yapın."
+      ],
+      "rating": 4,
+      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/04/mantar-sote-sunum-yemekcom.jpg",
+      "id": 10
     }
   ],
   "categories": [

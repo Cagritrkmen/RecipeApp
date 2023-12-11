@@ -15,7 +15,7 @@ const UserDetails = () => {
         <Typography variant="h5" align="center" gutterBottom>Kullanıcı Detayları</Typography>
         <Typography ><strong>Ad:</strong> {user && user.user ? user.user.username : 'Bilgi bulunamadı'}</Typography>
         <Typography ><strong>E-posta:</strong> {user && user.user ? user.user.email : 'Bilgi bulunamadı'}</Typography>
-        <Typography ><strong>Rol:</strong> {user && user.user ? user.user.role : 'Bilgi bulunamadı'}</Typography>
+        
       </Paper>
 
       {isAdmin && (
