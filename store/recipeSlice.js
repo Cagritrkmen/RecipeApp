@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast} from 'react-toastify';
 
 const initialState = {
   recipes: [],
@@ -20,14 +21,21 @@ export const fetchRecipesByCategory = createAsyncThunk(
 );
 
 export const fetchRecipes = createAsyncThunk(
-    'categories/fetchRecipes',
-    async () => {
-      const response = await axios.get(
-        'http://localhost:3001/recipes'
-      );
+  'categories/fetchRecipes',
+  async () => {
+    const response = await axios.get(
+      'http://localhost:3001/recipes'
+    );
+    return response.data;
+  }
+);
+export const deleteRecipe = createAsyncThunk(
+  'recipes/deleteRecipe',
+  async (recipeId) => {
+      const response = await axios.delete(`http://localhost:3001/recipes/${recipeId}`);
       return response.data;
-    }
-  );
+  }
+);
 
 export const fetchRecipeDetails = createAsyncThunk(
   'recipes/fetchRecipeDetails',
@@ -42,62 +50,71 @@ export const fetchRecipeDetails = createAsyncThunk(
 export const searchRecipes = createAsyncThunk(
   'search/searchRecipes',
   async (search) => {
-      const response = await axios.get( `http://localhost:3001/recipes?q=${search}`);
-      return response.data;
-    }
+    const response = await axios.get(`http://localhost:3001/recipes?q=${search}`);
+    return response.data;
+  }
 );
 
 const recipeSlice = createSlice({
-    name: 'recipes',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        .addCase(fetchRecipesByCategory.pending, (state) => {
-          state.loadingRecipes = true;
-        })
-        .addCase(fetchRecipesByCategory.fulfilled, (state, action) => {
-          state.recipes = action.payload;
-          state.loadingRecipes = false;
-        })
-        .addCase(fetchRecipesByCategory.rejected, (state, action) => {
-          state.loadingRecipes = false;
-          state.error = action.error.message;
-        })
-        .addCase(fetchRecipes.pending, (state) => { 
-          state.loadingRecipes = true;
-        })
-        .addCase(fetchRecipes.fulfilled, (state, action) => {
-          state.recipes = action.payload;
-          state.loadingRecipes = false;
-        })
-        .addCase(fetchRecipes.rejected, (state, action) => {
-          state.loadingRecipes = false;
-          state.error = action.error.message;
-        })
-        .addCase(fetchRecipeDetails.pending, (state) => {
-          state.loadingRecipeDetails = true;
-        })
-        .addCase(fetchRecipeDetails.fulfilled, (state, action) => {
-          state.recipeDetails = action.payload;
-          state.loadingRecipeDetails = false;
-        })
-        .addCase(fetchRecipeDetails.rejected, (state, action) => {
-          state.error = action.error.message;
-          state.loadingRecipeDetails = false;
-        })
-        .addCase(searchRecipes.pending, (state) => {
-          state.loadingRecipes = true;
-        })
-        .addCase(searchRecipes.fulfilled, (state, action) => {
-          state.recipes = action.payload;
-          state.loadingRecipes = false;
-        })
-        .addCase(searchRecipes.rejected, (state, action) => {
-          state.error = action.error.message;
-          state.loadingRecipes = false;
-        });
-    },
-  });
+  name: 'recipes',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRecipesByCategory.pending, (state) => {
+        state.loadingRecipes = true;
+      })
+      .addCase(fetchRecipesByCategory.fulfilled, (state, action) => {
+        state.recipes = action.payload;
+        state.loadingRecipes = false;
+      })
+      .addCase(fetchRecipesByCategory.rejected, (state, action) => {
+        state.loadingRecipes = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchRecipes.pending, (state) => {
+        state.loadingRecipes = true;
+      })
+      .addCase(fetchRecipes.fulfilled, (state, action) => {
+        state.recipes = action.payload;
+        state.loadingRecipes = false;
+      })
+      .addCase(fetchRecipes.rejected, (state, action) => {
+        state.loadingRecipes = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchRecipeDetails.pending, (state) => {
+        state.loadingRecipeDetails = true;
+      })
+      .addCase(fetchRecipeDetails.fulfilled, (state, action) => {
+        state.recipeDetails = action.payload;
+        state.loadingRecipeDetails = false;
+      })
+      .addCase(fetchRecipeDetails.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loadingRecipeDetails = false;
+      })
+      .addCase(searchRecipes.pending, (state) => {
+        state.loadingRecipes = true;
+      })
+      .addCase(searchRecipes.fulfilled, (state, action) => {
+        state.recipes = action.payload;
+        state.loadingRecipes = false;
+      })
+      .addCase(searchRecipes.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loadingRecipes = false;
+      })
+      .addCase(deleteRecipe.fulfilled, (state, action) => {
+         state.recipes = state.recipes.filter(recipe => recipe.id !== action.payload);
+         toast.success(`Tarif başarıyla silindi.` )
+      })
+      .addCase(deleteRecipe.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loadingRecipeDelete = false;
+        toast.error('Tarif silinemedi.')
+      });;
+  },
+});
 
 export default recipeSlice.reducer;

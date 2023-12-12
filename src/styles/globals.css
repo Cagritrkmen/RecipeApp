@@ -11,3 +11,4 @@ body {
   border-radius: 0;
   background-color: rgb(87, 51, 5);
 }
+@import 'react-toastify/dist/ReactToastify.css';
