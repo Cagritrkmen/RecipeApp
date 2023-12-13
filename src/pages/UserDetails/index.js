@@ -8,14 +8,14 @@ const UserDetails = () => {
   const router = useRouter();
 
   const isAdmin = user && user.user && user.user.role === 'admin';
-
+  
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
       <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%', marginBottom: '20px' }}>
         <Typography variant="h5" align="center" gutterBottom>Kullanıcı Detayları</Typography>
         <Typography ><strong>Ad:</strong> {user && user.user ? user.user.username : 'Bilgi bulunamadı'}</Typography>
         <Typography ><strong>E-posta:</strong> {user && user.user ? user.user.email : 'Bilgi bulunamadı'}</Typography>
-        
+
       </Paper>
 
       {isAdmin && (
