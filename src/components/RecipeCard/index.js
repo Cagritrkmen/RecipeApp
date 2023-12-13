@@ -30,9 +30,10 @@ const RecipeCard = ({handleFavoriteToggle,isFavorite,recipe}) => {
                 alt={recipe.title}
             />
             <CardContent>
-                <Typography mb={3} gutterBottom variant="h6" component="div">
+                <Typography  gutterBottom variant="h6" component="div">
                     {recipe.title}
                 </Typography>
+                <Typography variant='body2' >Zorluk:{recipe.difficulty}</Typography>
                 {recipe.category}
                 <Box
                     sx={{
@@ -45,7 +46,9 @@ const RecipeCard = ({handleFavoriteToggle,isFavorite,recipe}) => {
                     <Typography variant="body2" color="text.secondary">
                         ({recipe.rating})
                     </Typography>
+                    
                 </Box>
+                
             </CardContent>
             <Stack direction="row" justifyContent="space-around" mb={3} >
                 <Button

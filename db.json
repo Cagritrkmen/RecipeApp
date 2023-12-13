@@ -1,7 +1,6 @@
 {
   "recipes": [
     {
-      "id": 1,
       "title": "Mercimek Çorbası",
       "category": "Çorba",
       "difficulty": "Kolay",
@@ -24,7 +23,8 @@
         "Blendırdan geçirip servis yapın."
       ],
       "rating": 3,
-      "image": "https://images.pexels.com/photos/7469395/pexels-photo-7469395.jpeg?auto=compress&cs=tinysrgb&w=600"
+      "image": "https://images.pexels.com/photos/7469395/pexels-photo-7469395.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "id": 1
     },
     {
       "id": 2,
@@ -267,58 +267,29 @@
     {
       "username": "cagri",
       "email": "123@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
-      "role": "user",
-      "id": 1
-    },
-    {
-      "username": "cagri2",
-      "email": "123@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
+      "password": "1231233",
+      "passwordConfirm": "1231233",
+      "name": "cagriaasdda",
+      "surname": "turkmenb",
       "role": "admin",
+      "favorites": [
+        1,
+        2,
+        3,
+        5
+      ],
       "id": 1
     },
     {
-      "username": "cagri33",
-      "email": "12312@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
-      "role": "user",
-      "id": 2
-    },
-    {
-      "username": "cagri333",
-      "email": "12312@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
-      "role": "user",
-      "id": 3
-    },
-    {
-      "username": "cagri3333",
-      "email": "123123@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
-      "role": "user",
-      "id": 4
-    },
-    {
-      "username": "cagri332",
-      "email": "C@gmail.com",
-      "password": "123123",
-      "passwordConfirm": "123123",
-      "role": "user",
-      "id": 5
-    },
-    {
-      "username": "abiabai",
+      "username": "cagriasa",
       "email": "123@gmail.com",
       "password": "123123",
       "passwordConfirm": "123123",
+      "name": "cagri",
+      "surname": "abi",
       "role": "user",
-      "id": 6
+      "favorites": [],
+      "id": 2
     }
   ]
 }

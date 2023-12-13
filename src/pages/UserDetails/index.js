@@ -8,15 +8,28 @@ const UserDetails = () => {
   const router = useRouter();
 
   const isAdmin = user && user.user && user.user.role === 'admin';
-  
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
       <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%', marginBottom: '20px' }}>
         <Typography variant="h5" align="center" gutterBottom>Kullanıcı Detayları</Typography>
         <Typography ><strong>Ad:</strong> {user && user.user ? user.user.username : 'Bilgi bulunamadı'}</Typography>
         <Typography ><strong>E-posta:</strong> {user && user.user ? user.user.email : 'Bilgi bulunamadı'}</Typography>
-
+        <Typography ><strong>İsim:</strong> {user && user.user ? user.user.name : 'Bilgi bulunamadı'}</Typography>
+        <Typography ><strong>Soyisim:</strong> {user && user.user ? user.user.surname : 'Bilgi bulunamadı'}</Typography>
       </Paper>
+      {user && user.user && (
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => router.push(`/UserDetails/EditUser/${user.user.id}`)}
+            style={{ marginRight: '10px' }}
+          >
+            Kullanıcı Bilgilerini Güncelle
+          </Button>
+        </Box>
+      )}
 
       {isAdmin && (
         <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%' }}>

@@ -46,14 +46,6 @@ const EditRecipe = () => {
     const [instructionInput, setInstructionInput] = useState('');
 
 
-    const handleAddIngredient = () => {
-        if (ingredientInput.trim() !== '') {
-            const updatedIngredients = [...ingredients, ingredientInput.trim()];
-            setIngredients(updatedIngredients);
-            setFieldValue('ingredients', updatedIngredients);
-            setIngredientInput('');
-        }
-    };
     if (loadingRecipeDetails) {
         return <Box>Loading</Box>
     }

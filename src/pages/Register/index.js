@@ -16,7 +16,10 @@ const Register = () => {
     email: '',
     password: '',
     passwordConfirm: '',
+    name:"",
+    surname:"",
     role: 'user',
+    favorites: [],
   };
 
   const router = useRouter();
@@ -74,6 +77,32 @@ const Register = () => {
                     type="email"
                     error={form.errors.email && form.touched.email}
                     helperText={<ErrorMessage name="email" />}
+                  />
+                )}
+              </Field>
+              <Field name="name">
+                {({ field, form }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    label="İsim"
+                    type="name"
+                    error={form.errors.name && form.touched.name}
+                    helperText={<ErrorMessage name="name" />}
+                  />
+                )}
+              </Field>
+              <Field name="surname">
+                {({ field, form }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    label="Soyisim"
+                    type="surname"
+                    error={form.errors.surname && form.touched.surname}
+                    helperText={<ErrorMessage name="surname" />}
                   />
                 )}
               </Field>

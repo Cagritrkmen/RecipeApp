@@ -17,7 +17,7 @@ const CategoryList = ({ categories, handleCategoryClick }) => {
       divider={<Divider orientation="horizontal" flexItem />}
     >
       <Typography variant="h4" color="grey">
-        Categories
+        Kategoriler
       </Typography>
       <List component="nav">
         {categories.map((category) => (

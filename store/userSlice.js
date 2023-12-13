@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -9,6 +9,7 @@ const initialState = {
   isLoggedIn: false,
   error: null,
   isRegister: false,
+  loadingUserDetails: false,
 };
 
 
@@ -35,6 +36,13 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  'recipes/updateUser',
+  async ({ id, values },{ rejectWithValue }) => {
+    const response = await axios.put(`http://localhost:3001/users/${id}`, values);
+    return response.data;
+  }
+);
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
@@ -63,19 +71,28 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(registerUser.pending, (state, action) => {
+        state.loadingUserDetails = true;
+      })
       .addCase(registerUser.fulfilled, (state, action) => {
+        state.loadingUserDetails = false;
         state.user = action.payload;
         state.isLoggedIn = false;
         state.error = null;
-        state.isRegister= true;
+        state.isRegister = true;
         toast.success(`Başarıyla kayıt oldunuz. Login sayfasına yönlendiriliyorsunuz`);
       })
       .addCase(registerUser.rejected, (state, action) => {
+        state.loadingUserDetails = false;
         state.error = action.error.message;
-        state.isRegister= false;
+        state.isRegister = false;
         toast.error(`Kullanıcı adı zaten kullanımda`);
       })
+      .addCase(loginUser.pending, (state, action) => {
+        state.loadingUserDetails = true;
+      })
       .addCase(loginUser.fulfilled, (state, action) => {
+        state.loadingUserDetails = false;
         state.user = action.payload;
         state.isLoggedIn = true;
         state.error = null;
@@ -83,10 +100,27 @@ const userSlice = createSlice({
 
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.loadingUserDetails = false;
         state.error = action.error.message;
         toast.error(`Hatalı kullanıcı adı veya şifre`);
         ;
+      })
+      .addCase(updateUser.pending, (state, action) => {
+        state.loadingUserDetails = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.error = null;
+        state.loadingUserDetails = false;
+        toast.success(`Kullanıcı başarıyla güncellendi`);
+
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loadingUserDetails = false;
+        toast.error(`Kullanıcı güncellenemedi`);
       });
+
   },
 });
 
