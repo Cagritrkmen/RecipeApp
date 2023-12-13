@@ -10,17 +10,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, Button, Container, Typography } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 
 
 const ManageRecipe = () => {
+  const router = useRouter();
   const recipes = useSelector(state => state.recipes.recipes);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchRecipes());
   }, [dispatch]);
-  console.log('recipes', recipes)
 
   const handleDelete = async (recipeId) => {
     try {
@@ -32,15 +33,18 @@ const ManageRecipe = () => {
     }
   };
 
-  const handleUpdate = (recipeId) => {
-    // Burada güncelleme işlemini gerçekleştirecek olan fonksiyonu çağırabilirsiniz
-    // Örnek: history.push(`/update-recipe/${recipeId}`);
-    console.log('Update recipe with ID:', recipeId);
-  };
-
   return (
-    <Container style={{marginTop:"30px"}}>
+    <Container style={{ marginTop: "30px" }}>
       <Box mt={4} margin={"auto"} maxWidth={600}>
+        <Box display="flex"  justifyContent="flex-end" mb={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => router.push('/ManageRecipe/AddRecipe')}
+          >
+            Tarif Ekle
+          </Button>
+        </Box>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -56,11 +60,11 @@ const ManageRecipe = () => {
                   <TableCell>{recipe.title}</TableCell>
                   <TableCell>{recipe.category}</TableCell>
                   <TableCell>
-                    
+
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => handleUpdate(recipe.id)}
+                      onClick={() => router.push(`/ManageRecipe/EditRecipe/${recipe.id}`)}
                       style={{ marginRight: '10px' }}
                     >
                       Update
@@ -78,10 +82,11 @@ const ManageRecipe = () => {
             </TableBody>
           </Table>
         </TableContainer>
+
         <ToastContainer position='bottom-right' />
 
       </Box>
-      
+
     </Container>
 
   );

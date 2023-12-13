@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const initialState = {
   recipes: [],
@@ -32,25 +32,45 @@ export const fetchRecipes = createAsyncThunk(
 export const deleteRecipe = createAsyncThunk(
   'recipes/deleteRecipe',
   async (recipeId) => {
-      const response = await axios.delete(`http://localhost:3001/recipes/${recipeId}`);
-      return response.data;
-  }
-);
-
-export const fetchRecipeDetails = createAsyncThunk(
-  'recipes/fetchRecipeDetails',
-  async (recipeId) => {
-    const response = await axios.get(
-      `http://localhost:3001/recipes/${recipeId}`
-    );
+    const response = await axios.delete(`http://localhost:3001/recipes/${recipeId}`);
     return response.data;
   }
 );
+export const addNewRecipe = createAsyncThunk(
+  'recipes/addNewRecipe',
+  async (recipeData) => {
+    const response = await axios.post('http://localhost:3001/recipes', recipeData);
+    return response.data;
+  }
+);
+
+
+export const fetchRecipeDetails = createAsyncThunk(
+  'recipes/fetchRecipeDetails',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/recipes/${id}`);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error.response.data.error)
+    }
+
+  }
+);
+
 
 export const searchRecipes = createAsyncThunk(
   'search/searchRecipes',
   async (search) => {
     const response = await axios.get(`http://localhost:3001/recipes?q=${search}`);
+    return response.data;
+  }
+);
+export const updateRecipe = createAsyncThunk(
+  'recipes/updateRecipe',
+  async ({ id, values }) => {
+    const response = await axios.put(`http://localhost:3001/recipes/${id}`, values);
     return response.data;
   }
 );
@@ -105,15 +125,37 @@ const recipeSlice = createSlice({
         state.error = action.error.message;
         state.loadingRecipes = false;
       })
+      .addCase(addNewRecipe.fulfilled, (state, action) => {
+        state.recipes.push(action.payload);
+        toast.success(`Tarif başarıyla eklendi.`)
+        state.loading = false;
+      })
+      .addCase(addNewRecipe.rejected, (state, action) => {
+        state.error = action.error.message;
+        toast.error('Tarif eklenemedi.')
+        state.loading = false;
+      })
       .addCase(deleteRecipe.fulfilled, (state, action) => {
-         state.recipes = state.recipes.filter(recipe => recipe.id !== action.payload);
-         toast.success(`Tarif başarıyla silindi.` )
+        state.recipes = state.recipes.filter(recipe => recipe.id !== action.payload);
+        toast.success(`Tarif başarıyla silindi.`)
       })
       .addCase(deleteRecipe.rejected, (state, action) => {
         state.error = action.error.message;
-        state.loadingRecipeDelete = false;
         toast.error('Tarif silinemedi.')
-      });;
+      })
+      .addCase(updateRecipe.fulfilled, (state, action) => {
+
+        const updatedRecipe = action.payload;
+        const index = state.recipes.findIndex(recipe => recipe.id === updatedRecipe.id);
+        if (index !== -1) {
+          state.recipes[index] = updatedRecipe;
+          toast.success(`Tarif başarıyla güncellendi.`);
+        }
+      })
+      .addCase(updateRecipe.rejected, (state, action) => {
+        state.error = action.error.message;
+        toast.error('Tarif güncellenemedi.');
+      });
   },
 });
 

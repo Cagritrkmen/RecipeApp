@@ -22,8 +22,7 @@ const UserDetails = () => {
         <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%' }}>
           <Typography variant="h5" align="center">Admin Paneli</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-            <Button variant="contained" onClick={() => router.push("/AddRecipe")} sx={{ mr: 2 }}>Tarif Ekle</Button>
-            <Button variant="contained" onClick={() => router.push("/ManageRecipe")} sx={{ mr: 2 }}>Tarif Güncelle veya Sil</Button>
+            <Button variant="contained" onClick={() => router.push("/ManageRecipe")} sx={{ mr: 2 }}>Tarifleri Yönet</Button>
           </Box>
         </Paper>
       )}

@@ -4,8 +4,11 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories } from '../../../store/categorySlice';
+import { fetchCategories } from '../../../../store/categorySlice';
 import { useFormik } from 'formik';
+import { ToastContainer } from 'react-toastify';
+import { addNewRecipe } from '../../../../store/recipeSlice';
+import RecipeSchema from '../recipeSchema';
 
 
 const AddRecipe = () => {
@@ -15,18 +18,7 @@ const AddRecipe = () => {
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);
-    const RecipeSchema = Yup.object().shape({
-        title: Yup.string().required('Başlık gereklidir'),
-        category: Yup.string().required('Kategori seçmek zorunludur'),
-        difficulty: Yup.string().required('Zorluk seçmek zorunludur'),
-        ingredients: Yup.array()
-            .of(Yup.string().required('Malzeme gereklidir'))
-            .min(1, 'En az 1 malzeme eklemelisiniz'),
-        instructions: Yup.array()
-            .of(Yup.string().required('Malzeme gereklidir'))
-            .min(1, 'En az 1 malzeme eklemelisiniz'),
-        rating: Yup.string().required('Değerlendirme yapmak zorunludur'),
-    });
+    
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -41,15 +33,12 @@ const AddRecipe = () => {
         validationSchema: RecipeSchema,
         onSubmit: async (values) => {
             try {
-                await axios.post('http://localhost:3001/recipes', values);
-                alert('Tarif başarıyla eklendi!');
-                router.reload("/AddRecipe") 
-
+              await dispatch(addNewRecipe(values));
+              router.reload("/AddRecipe");
             } catch (error) {
-                alert('Tarif eklenemedi');
-                console.error('Bir hata oluştu:', error);
+              console.error('Bir hata oluştu:', error);
             }
-        },
+          },
     });
     const [ingredients, setIngredients] = useState([]);
     const [ingredientInput, setIngredientInput] = useState('');
@@ -272,6 +261,7 @@ const AddRecipe = () => {
                     </form>
                 </Typography>
             </Stack>
+            <ToastContainer position="bottom-right" />
         </Container>
     );
 };

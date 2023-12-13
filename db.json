@@ -231,6 +231,28 @@
       "rating": 4,
       "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/04/mantar-sote-sunum-yemekcom.jpg",
       "id": 10
+    },
+    {
+      "title": "Köfte",
+      "category": "Ana Yemek",
+      "difficulty": "Kolay",
+      "ingredients": [
+        "500 gram kıyma",
+        "1 adet soğan",
+        "1 yumurta",
+        "2 dilim bayat ekmek içi",
+        "Tuz, karabiber, kimyon"
+      ],
+      "instructions": [
+        "Kıymayı derin bir kaba alın.",
+        "Soğanı rendeleyip kıymaya ekleyin.",
+        "Ekmek içini ıslatarak sıkın ve kıymaya ekleyin.",
+        "Yumurtayı, baharatları da ilave ederek iyice yoğurun.",
+        "Köfteleri şekillendirip ızgarada veya tavada pişirin."
+      ],
+      "rating": 4,
+      "image": "https://cdn.yemek.com/uploads/2022/03/ev-koftesi-yemekcom.jpg",
+      "id": 11
     }
   ],
   "categories": [
