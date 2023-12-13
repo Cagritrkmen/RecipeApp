@@ -11,5 +11,6 @@ const RecipeSchema = Yup.object().shape({
         .of(Yup.string().required('Malzeme gereklidir'))
         .min(1, 'En az 1 malzeme eklemelisiniz'),
     rating: Yup.string().required('Değerlendirme yapmak zorunludur'),
+    image: Yup.string().required('Resim yolu eklemek zorunludur'),
 });
 export default RecipeSchema

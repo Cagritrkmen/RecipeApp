@@ -18,7 +18,7 @@ const AddRecipe = () => {
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);
-    
+
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -27,18 +27,18 @@ const AddRecipe = () => {
             ingredients: '',
             instructions: '',
             rating: '',
-            image:"",
+            image: "",
 
         },
         validationSchema: RecipeSchema,
         onSubmit: async (values) => {
             try {
-              await dispatch(addNewRecipe(values));
-              router.reload("/AddRecipe");
+                await dispatch(addNewRecipe(values));
+                router.reload("/AddRecipe");
             } catch (error) {
-              console.error('Bir hata oluştu:', error);
+                console.error('Bir hata oluştu:', error);
             }
-          },
+        },
     });
     const [ingredients, setIngredients] = useState([]);
     const [ingredientInput, setIngredientInput] = useState('');
@@ -83,186 +83,198 @@ const AddRecipe = () => {
 
     return (
         <Container>
-            <Stack spacing={2}>
-                <Typography variant="h4" component="h1">
-                    Tarif Ekle
-                    <form onSubmit={formik.handleSubmit}>
-                        <TextField
-                            fullWidth
-                            id="title"
-                            name="title"
-                            label="Başlık"
-                            value={formik.values.title}
-                            onChange={formik.handleChange}
-                            margin="normal"
-                            error={formik.touched.title && Boolean(formik.errors.title)}
-                            helperText={formik.touched.title && formik.errors.title}
-                            onBlur={formik.handleBlur}
-                        />
-                        <FormControl fullWidth margin="normal">
-                            <InputLabel id="demo-simple-select-label">Kategori</InputLabel>
-                            <Select
-                                id="category"
-                                name="category"
-                                value={formik.values.category}
+            <Box
+                sx={{
+                    marginTop:"20px",
+                    backgroundColor: '#fff', 
+                    padding: '10px 50px', 
+                    borderRadius: '20px', 
+                }}
+            >
+                <Stack spacing={2}>
+                    <Typography variant="h4"  component="h1">
+                        Tarif Ekle
+                        <form onSubmit={formik.handleSubmit}>
+                            <TextField
+                                fullWidth
+                                id="title"
+                                name="title"
+                                label="Başlık"
+                                value={formik.values.title}
                                 onChange={formik.handleChange}
-                                label={"Kategori"}
-                                error={formik.touched.category && Boolean(formik.errors.category)}
+                                margin="normal"
+                                error={formik.touched.title && Boolean(formik.errors.title)}
+                                helperText={formik.touched.title && formik.errors.title}
+                                onBlur={formik.handleBlur}
+                            />
+                            <FormControl fullWidth margin="normal">
+                                <InputLabel id="demo-simple-select-label">Kategori</InputLabel>
+                                <Select
+                                    id="category"
+                                    name="category"
+                                    value={formik.values.category}
+                                    onChange={formik.handleChange}
+                                    label={"Kategori"}
+                                    error={formik.touched.category && Boolean(formik.errors.category)}
 
-                            >
-                                {categories.map((category, index) => (
-                                    <MenuItem key={index} value={category}>
-                                        {category}
-                                    </MenuItem>
-                                ))}
+                                >
+                                    {categories.map((category, index) => (
+                                        <MenuItem key={index} value={category}>
+                                            {category}
+                                        </MenuItem>
+                                    ))}
 
-                            </Select>
-                            {formik.touched.category && formik.errors.category ? (
-                                <FormHelperText
-                                    sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
-                                >
-                                    {formik.touched.category && formik.errors.category}
-                                </FormHelperText>
-                            ) : null}
-                        </FormControl>
+                                </Select>
+                                {formik.touched.category && formik.errors.category ? (
+                                    <FormHelperText
+                                        sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
+                                    >
+                                        {formik.touched.category && formik.errors.category}
+                                    </FormHelperText>
+                                ) : null}
+                            </FormControl>
 
-                        <FormControl fullWidth margin="normal">
-                            <InputLabel id="difficulty-label">Zorluk</InputLabel>
-                            <Select
-                                id="difficulty"
-                                value={formik.values.difficulty}
-                                name='difficulty'
-                                onChange={formik.handleChange}
-                                label="Zorluk"
-                                error={formik.touched.difficulty && Boolean(formik.errors.difficulty)}
-                            >
-                                <MenuItem value={"Kolay"}>Kolay</MenuItem>
-                                <MenuItem value={"Orta"}>Orta</MenuItem>
-                                <MenuItem value={"Zor"}>Zor</MenuItem>
-                            </Select>
-                            {formik.touched.difficulty && formik.errors.difficulty ? (
-                                <FormHelperText
-                                    sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
+                            <FormControl fullWidth margin="normal">
+                                <InputLabel id="difficulty-label">Zorluk</InputLabel>
+                                <Select
+                                    id="difficulty"
+                                    value={formik.values.difficulty}
+                                    name='difficulty'
+                                    onChange={formik.handleChange}
+                                    label="Zorluk"
+                                    error={formik.touched.difficulty && Boolean(formik.errors.difficulty)}
                                 >
-                                    {formik.touched.difficulty && formik.errors.difficulty}
-                                </FormHelperText>
-                            ) : null}
-                        </FormControl>
-                        <FormControl fullWidth margin="normal">
-                            <InputLabel id="rating-label">Değerlendirme</InputLabel>
-                            <Select
-                                id="rating"
-                                value={formik.values.rating}
-                                name='rating'
-                                onChange={formik.handleChange}
-                                label="Değerlendirme"
-                                error={formik.touched.rating && Boolean(formik.errors.rating)}
-                            >
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                            </Select>
-                            {formik.touched.rating && formik.errors.rating ? (
-                                <FormHelperText
-                                    sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
+                                    <MenuItem value={"Kolay"}>Kolay</MenuItem>
+                                    <MenuItem value={"Orta"}>Orta</MenuItem>
+                                    <MenuItem value={"Zor"}>Zor</MenuItem>
+                                </Select>
+                                {formik.touched.difficulty && formik.errors.difficulty ? (
+                                    <FormHelperText
+                                        sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
+                                    >
+                                        {formik.touched.difficulty && formik.errors.difficulty}
+                                    </FormHelperText>
+                                ) : null}
+                            </FormControl>
+                            <FormControl fullWidth margin="normal">
+                                <InputLabel id="rating-label">Değerlendirme</InputLabel>
+                                <Select
+                                    id="rating"
+                                    value={formik.values.rating}
+                                    name='rating'
+                                    onChange={formik.handleChange}
+                                    label="Değerlendirme"
+                                    error={formik.touched.rating && Boolean(formik.errors.rating)}
                                 >
-                                    {formik.touched.rating && formik.errors.rating}
-                                </FormHelperText>
-                            ) : null}
-                        </FormControl>
-                        <Stack spacing={2}>
-                            <Stack spacing={1}>
-                                {ingredients.map((ingredient, index) => (
-                                    <Stack key={index} direction="row" alignItems="center" spacing={1}>
-                                        <Typography>{ingredient}</Typography>
-                                        <Button
-                                            variant="outlined"
-                                            color="error"
-                                            onClick={() => handleRemoveIngredient(index)}
-                                        >
-                                            Sil
-                                        </Button>
-                                    </Stack>
-                                ))}
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={3}>3</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                </Select>
+                                {formik.touched.rating && formik.errors.rating ? (
+                                    <FormHelperText
+                                        sx={{ color: "#d32f2f", marginLeft: "16px !important" }}
+                                    >
+                                        {formik.touched.rating && formik.errors.rating}
+                                    </FormHelperText>
+                                ) : null}
+                            </FormControl>
+                            <Stack spacing={2}>
+                                <Stack spacing={1}>
+                                    {ingredients.map((ingredient, index) => (
+                                        <Stack key={index} direction="row" alignItems="center" spacing={1}>
+                                            <Typography>{ingredient}</Typography>
+                                            <Button
+                                                variant="outlined"
+                                                color="error"
+                                                onClick={() => handleRemoveIngredient(index)}
+                                            >
+                                                Sil
+                                            </Button>
+                                        </Stack>
+                                    ))}
+                                </Stack>
+                                <Box display={'flex'} flexDirection={"row"} alignItems="center" justifyContent="space-between">
+                                    <TextField
+                                        fullWidth
+                                        label="Malzeme Ekle"
+                                        value={ingredientInput}
+                                        onChange={(e) => setIngredientInput(e.target.value)}
+
+                                    />
+                                    <Button
+
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleAddIngredient}
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
+                                    >
+                                        Malzeme Ekle
+                                    </Button>
+                                </Box>
+
                             </Stack>
-                            <Box display={'flex'} flexDirection={"row"} alignItems="center" justifyContent="space-between">
-                                <TextField
-                                    fullWidth
-                                    label="Malzeme Ekle"
-                                    value={ingredientInput}
-                                    onChange={(e) => setIngredientInput(e.target.value)}
-                                   
-                                />
-                                <Button
+                            <Stack spacing={2}>
+                                <Stack spacing={1}>
+                                    {instructions.map((instruction, index) => (
+                                        <Stack key={index} direction="row" alignItems="center" spacing={1}>
+                                            <Typography>{instruction}</Typography>
+                                            <Button
+                                                variant="outlined"
+                                                color="error"
+                                                onClick={() => handleRemoveInstruction(index)}
+                                            >
+                                                Sil
+                                            </Button>
+                                        </Stack>
+                                    ))}
+                                </Stack>
+                                <Box display={'flex'} flexDirection={"row"} alignItems="center" justifyContent="space-between">
+                                    <TextField
+                                        fullWidth
+                                        label="Yapılacaklar Ekle"
+                                        value={instructionInput}
+                                        onChange={(e) => setInstructionInput(e.target.value)}
 
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={handleAddIngredient}
-                                    style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
-                                >
-                                    Malzeme Ekle
-                                </Button>
-                            </Box>
+                                    />
+                                    <Button
 
-                        </Stack>
-                        <Stack spacing={2}>
-                            <Stack spacing={1}>
-                                {instructions.map((instruction, index) => (
-                                    <Stack key={index} direction="row" alignItems="center" spacing={1}>
-                                        <Typography>{instruction}</Typography>
-                                        <Button
-                                            variant="outlined"
-                                            color="error"
-                                            onClick={() => handleRemoveInstruction(index)}
-                                        >
-                                            Sil
-                                        </Button>
-                                    </Stack>
-                                ))}
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleAddInstructions}
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
+                                    >
+                                        Yapılacaklar Ekle
+                                    </Button>
+                                </Box>
+
                             </Stack>
-                            <Box display={'flex'} flexDirection={"row"} alignItems="center" justifyContent="space-between">
-                                <TextField
-                                    fullWidth
-                                    label="Yapılacaklar Ekle"
-                                    value={instructionInput}
-                                    onChange={(e) => setInstructionInput(e.target.value)}
-                                    
-                                />
-                                <Button
+                            <TextField
+                                fullWidth
+                                id="image"
+                                name="image"
+                                label="Resim Yolu"
+                                value={formik.values.image}
+                                onChange={formik.handleChange}
+                                margin="normal"
+                                error={formik.touched.image && Boolean(formik.errors.image)}
+                                helperText={formik.touched.image && formik.errors.image}
+                                onBlur={formik.handleBlur}
+                            />
 
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={handleAddInstructions}
-                                    style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
-                                >
-                                    Yapılacaklar Ekle
-                                </Button>
-                            </Box>
-
-                        </Stack>
-                        <TextField
-                            fullWidth
-                            id="image"
-                            name="image"
-                            label="Resim Yolu"
-                            value={formik.values.image}
-                            onChange={formik.handleChange}
-                            margin="normal"
-                            error={formik.touched.image && Boolean(formik.errors.image)}
-                            helperText={formik.touched.image && formik.errors.image}
-                            onBlur={formik.handleBlur}
-                        />
-
-                        <Button color="primary" variant="contained" fullWidth type="submit">
-                            Tarif Ekle
-                        </Button>
-                    </form>
-                </Typography>
-            </Stack>
+                            <Button color="primary" variant="contained" fullWidth type="submit">
+                                Tarif Ekle
+                            </Button>
+                        </form>
+                    </Typography>
+                </Stack>
+                <ToastContainer position="bottom-right" />
+            </Box >
             <ToastContainer position="bottom-right" />
-        </Container>
+        </Container >
+
+
     );
 };
 

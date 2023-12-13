@@ -22,7 +22,7 @@ function DashboardLayout({ children }) {
     };
 
     return (
-        <Box>
+        <Box width={"100%"} position={"absolute"}>
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
@@ -32,7 +32,6 @@ function DashboardLayout({ children }) {
                             component="div"
                             sx={{
                                 mr: 2,
-                                display: { xs: 'none', md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -44,20 +43,10 @@ function DashboardLayout({ children }) {
                             }}
                             onClick={() => (router.push('/'))}
                         >
-                            <Image src={logo} alt="My Logo" width={60} height={60} />
+                            <Image src={logo} alt="My Logo" width={60} height={60} priority />
                         </Typography>
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                            <IconButton
-                                size="large"
-                                aria-label="menu"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                color="inherit"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                        </Box>
+                        
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Button

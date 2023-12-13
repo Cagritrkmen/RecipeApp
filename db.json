@@ -311,6 +311,14 @@
       "passwordConfirm": "123123",
       "role": "user",
       "id": 5
+    },
+    {
+      "username": "abiabai",
+      "email": "123@gmail.com",
+      "password": "123123",
+      "passwordConfirm": "123123",
+      "role": "user",
+      "id": 6
     }
   ]
 }
