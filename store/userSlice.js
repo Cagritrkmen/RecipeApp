@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
 
@@ -96,6 +98,11 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+const persistConfig = {
+  key: 'user',
+  storage: storage, 
+  whitelist: ["user","isLoggedIn"]
+};
 
 
 
@@ -180,5 +187,8 @@ const userSlice = createSlice({
 
   },
 });
+
 export const { logoutUser } = userSlice.actions;
-export default userSlice.reducer;
+export const persistedUserReducer = persistReducer(persistConfig, userSlice.reducer); // persistReducer'ı userReducer üzerine uygulayın
+
+export default persistedUserReducer; // default olarak userReducer'ı export edin

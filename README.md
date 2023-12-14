@@ -55,3 +55,5 @@ Yup
 Formik
 
 Toastify
+
+Redux-Persist
