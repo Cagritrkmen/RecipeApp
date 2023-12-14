@@ -73,20 +73,7 @@ const EditUser = () => {
                                 setFieldValue,
                             }) => (
                                 <form onSubmit={handleSubmit}>
-                                    <Field name="username">
-                                        {({ field, form }) => (
-                                            <TextField
-                                                {...field}
-                                                margin="normal"
-                                                value={values.username}
-                                                fullWidth
-                                                label="Kullanıcı Adı"
-                                                type="text"
-                                                error={form.errors.username && form.touched.username}
-                                                helperText={<ErrorMessage name="username" />}
-                                            />
-                                        )}
-                                    </Field>
+                                    
 
                                     <Field name="email">
                                         {({ field, form }) => (

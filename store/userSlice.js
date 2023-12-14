@@ -85,9 +85,12 @@ export const loginUser = createAsyncThunk(
 
       if (response.data.length === 1) {
         return response.data[0];
+        
       } else {
         throw new Error('Invalid credentials');
       }
+      
+
     } catch (error) {
       return rejectWithValue(error.response.data.error);
     }
@@ -99,7 +102,13 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      
+      state.isLoggedIn = false; 
+      state.user = null; 
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state, action) => {
@@ -171,5 +180,5 @@ const userSlice = createSlice({
 
   },
 });
-
+export const { logoutUser } = userSlice.actions;
 export default userSlice.reducer;

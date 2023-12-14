@@ -1,260 +1,258 @@
 {
-  "recipes": [
-    {
-      "title": "Mercimek Çorbası",
-      "category": "Çorba",
-      "difficulty": "Kolay",
-      "ingredients": [
-        "1 su bardağı kırmızı mercimek",
-        "1 adet soğan",
-        "1 adet havuç",
-        "1 yemek kaşığı un",
-        "1 yemek kaşığı tereyağı",
-        "7 su bardağı su",
-        "Tuz, karabiber"
-      ],
-      "instructions": [
-        "Mercimeği yıkayıp süzün.",
-        "Soğanı ve havucu küçük küçük doğrayın.",
-        "Tencerede tereyağını eritin, unu ekleyip kavurun.",
-        "Doğradığınız sebzeleri ekleyip kavurmaya devam edin.",
-        "Mercimeği ekleyin ve suyunu ilave edin.",
-        "Mercimekler yumuşayana kadar pişirin.",
-        "Blendırdan geçirip servis yapın."
-      ],
-      "rating": 3,
-      "image": "https://images.pexels.com/photos/7469395/pexels-photo-7469395.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "title": "Fırında Tavuk",
-      "category": "Ana Yemek",
-      "difficulty": "Orta",
-      "ingredients": [
-        "4 adet tavuk but",
-        "2 adet limon",
-        "4 diş sarımsak",
-        "1 yemek kaşığı zeytinyağı",
-        "Kekik, tuz, karabiber"
-      ],
-      "instructions": [
-        "Tavuk butlarını yıkayıp temizleyin.",
-        "Limon suyu, zeytinyağı, sarımsak ve baharatları bir kasede karıştırın.",
-        "Tavukları bu karışımla iyice ovun.",
-        "Fırın tepsisine yerleştirin ve önceden ısıtılmış fırında pişirin."
-      ],
-      "rating": 5,
-      "image": "https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 3,
-      "title": "Domates Çorbası",
-      "category": "Çorba",
-      "difficulty": "Orta",
-      "ingredients": [
-        "5 adet domates",
-        "1 adet soğan",
-        "2 yemek kaşığı tereyağı",
-        "1 yemek kaşığı un",
-        "4 su bardağı su veya tavuk suyu",
-        "Tuz, karabiber, kırmızı biber"
-      ],
-      "instructions": [
-        "Domatesleri rendeleyin, soğanı doğrayın ve tencerede tereyağında kavurun.",
-        "Unu ekleyip kavurmaya devam edin, ardından suyu ekleyin.",
-        "Kaynayana kadar karıştırın, ardından baharatları ve tuzu ekleyin.",
-        "Kıvam alana kadar pişirip servis yapın."
-      ],
-      "rating": 4,
-      "image": "https://images.pexels.com/photos/13976322/pexels-photo-13976322.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 4,
-      "title": "Izgara Somon",
-      "category": "Ana Yemek",
-      "difficulty": "Orta",
-      "ingredients": [
-        "4 dilim somon fileto",
-        "2 yemek kaşığı zeytinyağı",
-        "1 limon",
-        "Taze kekik veya roka",
-        "Tuz, karabiber"
-      ],
-      "instructions": [
-        "Somonları zeytinyağı, tuz ve karabiberle marine edin.",
-        "Tavada veya ızgarada her iki tarafını da pişirin.",
-        "Üzerine limon sıkıp taze kekik veya roka ile servis yapın."
-      ],
-      "rating": 5,
-      "image": "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 5,
-      "title": "Elmalı Kurabiye",
-      "category": "Tatlı",
-      "difficulty": "Kolay",
-      "ingredients": [
-        "2 adet elma",
-        "1 su bardağı toz şeker",
-        "1 su bardağı sıvı yağ",
-        "1 yumurta",
-        "1 paket vanilya",
-        "1 paket kabartma tozu",
-        "Aldığı kadar un"
-      ],
-      "instructions": [
-        "Elmaları rendeleyin ve suyunu sıkın.",
-        "Diğer malzemeleri ekleyerek yumuşak bir hamur elde edin.",
-        "Hamurdan ceviz büyüklüğünde parçalar koparıp yağlı kağıt serili tepsiye dizin.",
-        "Önceden ısıtılmış 180 derece fırında altın rengi olana kadar pişirin."
-      ],
-      "rating": 4,
-      "image": "https://media.istockphoto.com/id/1473426900/tr/foto%C4%9Fraf/apple-carrot-muffins.jpg?s=612x612&w=0&k=20&c=m8Ql-mnc1C4od1qKMqYdzTcMlqjmzLyYCQs3m5sqBJA="
-    },
-    {
-      "id": 6,
-      "title": "Mevsim Salatası",
-      "category": "Salata",
-      "difficulty": "Kolay",
-      "ingredients": [
-        "Marul",
-        "Domates",
-        "Salatalık",
-        "Roka",
-        "Zeytinyağı",
-        "Limon suyu",
-        "Tuz, karabiber"
-      ],
-      "instructions": [
-        "Tüm sebzeleri yıkayın ve doğrayın.",
-        "Bir karıştırma kabında zeytinyağı, limon suyu, tuz ve karabiberi karıştırın.",
-        "Doğranmış sebzeleri karışıma ekleyip harmanlayın ve servis yapın."
-      ],
-      "rating": 5,
-      "image": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 7,
-      "title": "Guacamole",
-      "category": "Atıştırmalık",
-      "difficulty": "Kolay",
-      "ingredients": [
-        "2 adet avokado",
-        "1 adet domates",
-        "1 adet soğan",
-        "1 limon suyu",
-        "Taze kişniş veya maydanoz",
-        "Tuz, karabiber, kırmızı pul biber"
-      ],
-      "instructions": [
-        "Avokadoları ezerek püre haline getirin.",
-        "Domatesi ve soğanı küçük küçük doğrayın.",
-        "Bir karıştırma kabında avokado, domates, soğan, limon suyu ve baharatları karıştırın.",
-        "Üzerine taze kişniş veya maydanoz serperek servis yapın."
-      ],
-      "rating": 5,
-      "image": "https://images.pexels.com/photos/1321942/pexels-photo-1321942.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 8,
-      "title": "Çikolatalı Brownie",
-      "category": "Tatlı",
-      "difficulty": "Orta",
-      "ingredients": [
-        "200 gram bitter çikolata",
-        "150 gram tereyağı",
-        "3 adet yumurta",
-        "1 su bardağı toz şeker",
-        "1 su bardağı un",
-        "1 tatlı kaşığı vanilya özütü",
-        "Yarım çay kaşığı tuz"
-      ],
-      "instructions": [
-        "Çikolatayı ve tereyağını benmari usulü eritin, soğumaya bırakın.",
-        "Yumurtaları ve şekeri çırpın, vanilya özütünü ekleyin.",
-        "Eriyip soğuyan çikolata karışımını ekleyin, karıştırın.",
-        "Unu ve tuzu ekleyip karıştırın.",
-        "Yağlanmış fırın tepsisine karışımı dökün.",
-        "Önceden ısıtılmış 180 derece fırında 25-30 dakika pişirin.",
-        "Fırından çıkarıp soğuduktan sonra dilimleyerek servis yapın."
-      ],
-      "rating": 5,
-      "image": "https://images.pexels.com/photos/15511433/pexels-photo-15511433/free-photo-of-cikolatali-kapkek.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "id": 9,
-      "title": "Humus",
-      "category": "Atıştırmalık",
-      "difficulty": "Orta",
-      "ingredients": [
-        "1 su bardağı haşlanmış nohut",
-        "2 yemek kaşığı tahin",
-        "2 diş sarımsak",
-        "3 yemek kaşığı zeytinyağı",
-        "2 yemek kaşığı limon suyu",
-        "1 çay kaşığı kimyon",
-        "Tuz, karabiber",
-        "Taze maydanoz veya pul biber (servis için)"
-      ],
-      "instructions": [
-        "Nohutları, tahini, sarımsakları, zeytinyağını, limon suyunu, kimyonu, tuz ve karabiberi blender'da pürüzsüz bir kıvam alana kadar karıştırın.",
-        "Karışımı bir kâseye alın ve üstüne zeytinyağı gezdirin.",
-        "Servis yapmadan önce üzerini taze maydanoz veya pul biberle süsleyebilirsiniz.",
-        "Hummusu, dilimlenmiş sebzeler, pide veya kraker ile servis yapın."
-      ],
-      "rating": 4,
-      "image": "https://images.pexels.com/photos/6419746/pexels-photo-6419746.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "title": "Mantar Sote",
-      "category": "Ana Yemek",
-      "difficulty": "Orta",
-      "ingredients": [
-        "500 gram mantar (temizlenmiş ve dilimlenmiş)",
-        "1 adet büyük soğan (doğranmış)",
-        "2 adet domates (rendelenmiş)",
-        "2 diş sarımsak (ince doğranmış)",
-        "2 yemek kaşığı zeytinyağı",
-        "1 çay kaşığı toz biber",
-        "1 çay kaşığı tuz",
-        "Taze kişniş veya maydanoz (servis için)"
-      ],
-      "instructions": [
-        "Tencereye zeytinyağını ekleyin ve ısıtın.",
-        "Doğranmış soğanı ekleyip, şeffaflaşana kadar kavurun.",
-        "İnce dilimlenmiş mantarları ekleyin, suyunu salıp çekene kadar pişirin.",
-        "Rendelenmiş domates ve ince doğranmış sarımsakları ilave edin, karıştırın.",
-        "Tuz ve toz biber ekleyin, karıştırıp, kısık ateşte 10-15 dakika pişirin.",
-        "Pişen mantar soteyi servis tabağına alın ve üzerine taze kişniş veya maydanoz ile süsleyerek sıcak olarak servis yapın."
-      ],
-      "rating": 4,
-      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/04/mantar-sote-sunum-yemekcom.jpg",
-      "id": 10
-    },
-    {
-      "title": "Köfte",
-      "category": "Ana Yemek",
-      "difficulty": "Kolay",
-      "ingredients": [
-        "500 gram kıyma",
-        "1 adet soğan",
-        "1 yumurta",
-        "2 dilim bayat ekmek içi",
-        "Tuz, karabiber, kimyon"
-      ],
-      "instructions": [
-        "Kıymayı derin bir kaba alın.",
-        "Soğanı rendeleyip kıymaya ekleyin.",
-        "Ekmek içini ıslatarak sıkın ve kıymaya ekleyin.",
-        "Yumurtayı, baharatları da ilave ederek iyice yoğurun.",
-        "Köfteleri şekillendirip ızgarada veya tavada pişirin."
-      ],
-      "rating": 4,
-      "image": "https://cdn.yemek.com/uploads/2022/03/ev-koftesi-yemekcom.jpg",
-      "id": 11
-    }
-  ],
+  "recipes": [{
+    "title": "Mercimek Çorbası",
+    "category": "Çorba",
+    "difficulty": "Kolay",
+    "ingredients": [
+      "1 su bardağı kırmızı mercimek",
+      "1 adet soğan",
+      "1 adet havuç",
+      "1 yemek kaşığı un",
+      "1 yemek kaşığı tereyağı",
+      "7 su bardağı su",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Mercimeği yıkayıp süzün.",
+      "Soğanı ve havucu küçük küçük doğrayın.",
+      "Tencerede tereyağını eritin, unu ekleyip kavurun.",
+      "Doğradığınız sebzeleri ekleyip kavurmaya devam edin.",
+      "Mercimeği ekleyin ve suyunu ilave edin.",
+      "Mercimekler yumuşayana kadar pişirin.",
+      "Blendırdan geçirip servis yapın."
+    ],
+    "rating": 3,
+    "image": "https://images.pexels.com/photos/7469395/pexels-photo-7469395.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "id": 1
+  },
+  {
+    "id": 2,
+    "title": "Fırında Tavuk",
+    "category": "Ana Yemek",
+    "difficulty": "Orta",
+    "ingredients": [
+      "4 adet tavuk but",
+      "2 adet limon",
+      "4 diş sarımsak",
+      "1 yemek kaşığı zeytinyağı",
+      "Kekik, tuz, karabiber"
+    ],
+    "instructions": [
+      "Tavuk butlarını yıkayıp temizleyin.",
+      "Limon suyu, zeytinyağı, sarımsak ve baharatları bir kasede karıştırın.",
+      "Tavukları bu karışımla iyice ovun.",
+      "Fırın tepsisine yerleştirin ve önceden ısıtılmış fırında pişirin."
+    ],
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 3,
+    "title": "Domates Çorbası",
+    "category": "Çorba",
+    "difficulty": "Orta",
+    "ingredients": [
+      "5 adet domates",
+      "1 adet soğan",
+      "2 yemek kaşığı tereyağı",
+      "1 yemek kaşığı un",
+      "4 su bardağı su veya tavuk suyu",
+      "Tuz, karabiber, kırmızı biber"
+    ],
+    "instructions": [
+      "Domatesleri rendeleyin, soğanı doğrayın ve tencerede tereyağında kavurun.",
+      "Unu ekleyip kavurmaya devam edin, ardından suyu ekleyin.",
+      "Kaynayana kadar karıştırın, ardından baharatları ve tuzu ekleyin.",
+      "Kıvam alana kadar pişirip servis yapın."
+    ],
+    "rating": 4,
+    "image": "https://images.pexels.com/photos/13976322/pexels-photo-13976322.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 4,
+    "title": "Izgara Somon",
+    "category": "Ana Yemek",
+    "difficulty": "Orta",
+    "ingredients": [
+      "4 dilim somon fileto",
+      "2 yemek kaşığı zeytinyağı",
+      "1 limon",
+      "Taze kekik veya roka",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Somonları zeytinyağı, tuz ve karabiberle marine edin.",
+      "Tavada veya ızgarada her iki tarafını da pişirin.",
+      "Üzerine limon sıkıp taze kekik veya roka ile servis yapın."
+    ],
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 5,
+    "title": "Elmalı Kurabiye",
+    "category": "Tatlı",
+    "difficulty": "Kolay",
+    "ingredients": [
+      "2 adet elma",
+      "1 su bardağı toz şeker",
+      "1 su bardağı sıvı yağ",
+      "1 yumurta",
+      "1 paket vanilya",
+      "1 paket kabartma tozu",
+      "Aldığı kadar un"
+    ],
+    "instructions": [
+      "Elmaları rendeleyin ve suyunu sıkın.",
+      "Diğer malzemeleri ekleyerek yumuşak bir hamur elde edin.",
+      "Hamurdan ceviz büyüklüğünde parçalar koparıp yağlı kağıt serili tepsiye dizin.",
+      "Önceden ısıtılmış 180 derece fırında altın rengi olana kadar pişirin."
+    ],
+    "rating": 4,
+    "image": "https://media.istockphoto.com/id/1473426900/tr/foto%C4%9Fraf/apple-carrot-muffins.jpg?s=612x612&w=0&k=20&c=m8Ql-mnc1C4od1qKMqYdzTcMlqjmzLyYCQs3m5sqBJA="
+  },
+  {
+    "id": 6,
+    "title": "Mevsim Salatası",
+    "category": "Salata",
+    "difficulty": "Kolay",
+    "ingredients": [
+      "Marul",
+      "Domates",
+      "Salatalık",
+      "Roka",
+      "Zeytinyağı",
+      "Limon suyu",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Tüm sebzeleri yıkayın ve doğrayın.",
+      "Bir karıştırma kabında zeytinyağı, limon suyu, tuz ve karabiberi karıştırın.",
+      "Doğranmış sebzeleri karışıma ekleyip harmanlayın ve servis yapın."
+    ],
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 7,
+    "title": "Guacamole",
+    "category": "Atıştırmalık",
+    "difficulty": "Kolay",
+    "ingredients": [
+      "2 adet avokado",
+      "1 adet domates",
+      "1 adet soğan",
+      "1 limon suyu",
+      "Taze kişniş veya maydanoz",
+      "Tuz, karabiber, kırmızı pul biber"
+    ],
+    "instructions": [
+      "Avokadoları ezerek püre haline getirin.",
+      "Domatesi ve soğanı küçük küçük doğrayın.",
+      "Bir karıştırma kabında avokado, domates, soğan, limon suyu ve baharatları karıştırın.",
+      "Üzerine taze kişniş veya maydanoz serperek servis yapın."
+    ],
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/1321942/pexels-photo-1321942.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 8,
+    "title": "Çikolatalı Brownie",
+    "category": "Tatlı",
+    "difficulty": "Orta",
+    "ingredients": [
+      "200 gram bitter çikolata",
+      "150 gram tereyağı",
+      "3 adet yumurta",
+      "1 su bardağı toz şeker",
+      "1 su bardağı un",
+      "1 tatlı kaşığı vanilya özütü",
+      "Yarım çay kaşığı tuz"
+    ],
+    "instructions": [
+      "Çikolatayı ve tereyağını benmari usulü eritin, soğumaya bırakın.",
+      "Yumurtaları ve şekeri çırpın, vanilya özütünü ekleyin.",
+      "Eriyip soğuyan çikolata karışımını ekleyin, karıştırın.",
+      "Unu ve tuzu ekleyip karıştırın.",
+      "Yağlanmış fırın tepsisine karışımı dökün.",
+      "Önceden ısıtılmış 180 derece fırında 25-30 dakika pişirin.",
+      "Fırından çıkarıp soğuduktan sonra dilimleyerek servis yapın."
+    ],
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/15511433/pexels-photo-15511433/free-photo-of-cikolatali-kapkek.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 9,
+    "title": "Humus",
+    "category": "Atıştırmalık",
+    "difficulty": "Orta",
+    "ingredients": [
+      "1 su bardağı haşlanmış nohut",
+      "2 yemek kaşığı tahin",
+      "2 diş sarımsak",
+      "3 yemek kaşığı zeytinyağı",
+      "2 yemek kaşığı limon suyu",
+      "1 çay kaşığı kimyon",
+      "Tuz, karabiber",
+      "Taze maydanoz veya pul biber (servis için)"
+    ],
+    "instructions": [
+      "Nohutları, tahini, sarımsakları, zeytinyağını, limon suyunu, kimyonu, tuz ve karabiberi blender'da pürüzsüz bir kıvam alana kadar karıştırın.",
+      "Karışımı bir kâseye alın ve üstüne zeytinyağı gezdirin.",
+      "Servis yapmadan önce üzerini taze maydanoz veya pul biberle süsleyebilirsiniz.",
+      "Hummusu, dilimlenmiş sebzeler, pide veya kraker ile servis yapın."
+    ],
+    "rating": 4,
+    "image": "https://images.pexels.com/photos/6419746/pexels-photo-6419746.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "title": "Mantar Sote",
+    "category": "Ana Yemek",
+    "difficulty": "Orta",
+    "ingredients": [
+      "500 gram mantar (temizlenmiş ve dilimlenmiş)",
+      "1 adet büyük soğan (doğranmış)",
+      "2 adet domates (rendelenmiş)",
+      "2 diş sarımsak (ince doğranmış)",
+      "2 yemek kaşığı zeytinyağı",
+      "1 çay kaşığı toz biber",
+      "1 çay kaşığı tuz",
+      "Taze kişniş veya maydanoz (servis için)"
+    ],
+    "instructions": [
+      "Tencereye zeytinyağını ekleyin ve ısıtın.",
+      "Doğranmış soğanı ekleyip, şeffaflaşana kadar kavurun.",
+      "İnce dilimlenmiş mantarları ekleyin, suyunu salıp çekene kadar pişirin.",
+      "Rendelenmiş domates ve ince doğranmış sarımsakları ilave edin, karıştırın.",
+      "Tuz ve toz biber ekleyin, karıştırıp, kısık ateşte 10-15 dakika pişirin.",
+      "Pişen mantar soteyi servis tabağına alın ve üzerine taze kişniş veya maydanoz ile süsleyerek sıcak olarak servis yapın."
+    ],
+    "rating": 4,
+    "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/04/mantar-sote-sunum-yemekcom.jpg",
+    "id": 10
+  },
+  {
+    "title": "Köfte",
+    "category": "Ana Yemek",
+    "difficulty": "Kolay",
+    "ingredients": [
+      "500 gram kıyma",
+      "1 adet soğan",
+      "1 yumurta",
+      "2 dilim bayat ekmek içi",
+      "Tuz, karabiber, kimyon"
+    ],
+    "instructions": [
+      "Kıymayı derin bir kaba alın.",
+      "Soğanı rendeleyip kıymaya ekleyin.",
+      "Ekmek içini ıslatarak sıkın ve kıymaya ekleyin.",
+      "Yumurtayı, baharatları da ilave ederek iyice yoğurun.",
+      "Köfteleri şekillendirip ızgarada veya tavada pişirin."
+    ],
+    "rating": 4,
+    "image": "https://cdn.yemek.com/uploads/2022/03/ev-koftesi-yemekcom.jpg",
+    "id": 11
+  }],
   "categories": [
     "Tümü",
     "Çorba",
@@ -267,10 +265,10 @@
     {
       "username": "cagri",
       "email": "123@gmail.com",
-      "password": "1231233",
-      "passwordConfirm": "1231233",
-      "name": "cagriaasdda",
-      "surname": "turkmenb",
+      "password": "123123",
+      "passwordConfirm": "123123",
+      "name": "cagri",
+      "surname": "turkmen",
       "role": "admin",
       "favorites": [
         1,
@@ -285,10 +283,12 @@
       "email": "123@gmail.com",
       "password": "123123",
       "passwordConfirm": "123123",
-      "name": "cagri",
+      "name": "cagrii",
       "surname": "abi",
       "role": "user",
-      "favorites": [],
+      "favorites": [
+        6
+      ],
       "id": 2
     },
     {
@@ -296,7 +296,7 @@
       "email": "123@gmial.com",
       "password": "123123",
       "passwordConfirm": "123123",
-      "name": "murat",
+      "name": "muratt",
       "surname": "yıldırım",
       "role": "user",
       "favorites": [

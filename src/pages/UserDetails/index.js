@@ -1,11 +1,24 @@
 import React from 'react';
 import { Typography, Box, Paper, Button } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { logoutUser } from '../../../store/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 const UserDetails = () => {
   const user = useSelector(state => state.user);
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+   
+    dispatch(logoutUser());
+    toast.success("Başarıyla çıkış yapıldı. Login sayfasına yönlendiriliyorsunuz.")
+    setTimeout(()=>{
+      router.push('/Login');
+    },2000)
+    
+  };
 
   const isAdmin = user && user.user && user.user.role === 'admin';
 
@@ -28,17 +41,26 @@ const UserDetails = () => {
           >
             Kullanıcı Bilgilerini Güncelle
           </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleLogout}
+            style={{ marginRight: '10px' }}
+          >
+            Çıkış Yap
+          </Button>
         </Box>
       )}
 
       {isAdmin && (
-        <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%' }}>
+        <Paper  sx={{ padding: '20px', maxWidth: '450px', width: '100%', marginTop:"25px" }}>
           <Typography variant="h5" align="center">Admin Paneli</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
             <Button variant="contained" onClick={() => router.push("/ManageRecipe")} sx={{ mr: 2 }}>Tarifleri Yönet</Button>
           </Box>
         </Paper>
       )}
+      <ToastContainer position='bottom-right' />
     </Box>
   );
 };
