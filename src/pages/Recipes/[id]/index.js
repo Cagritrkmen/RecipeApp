@@ -13,6 +13,8 @@ import {
     ListItemText,
     Skeleton,
     Divider,
+    Box,
+    Button,
 } from '@mui/material';
 
 const RecipeDetails = () => {
@@ -37,9 +39,15 @@ const RecipeDetails = () => {
 
     return (
         <Container>
-            <Typography variant="h3" gutterBottom mt={3} color={"white"}>
-                {recipeDetails.title}
-            </Typography>
+            <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} alignItems={"end"}>
+                <Typography variant="h3" gutterBottom mt={3} color={"white"}>
+                    {recipeDetails.title}
+                </Typography>
+                <Button style={{height:"50px", marginRight:"40px"}}  variant="contained" color="primary" onClick={() => { router.back() }}>
+                    Geri Dön
+                </Button>
+            </Box>
+
 
             <Grid color={"white"} border={4} borderRadius={10} mt={1} container spacing={4} >
                 <Grid item xs={12} sm={4} borderRight={4} pb={3} pl={4} pr={4}>
@@ -108,7 +116,7 @@ const RecipeDetails = () => {
                 </Grid>
             </Grid>
 
-            {/* Aradaki çizgi */}
+
 
 
         </Container>

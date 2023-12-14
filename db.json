@@ -290,6 +290,21 @@
       "role": "user",
       "favorites": [],
       "id": 2
+    },
+    {
+      "username": "murat",
+      "email": "123@gmial.com",
+      "password": "123123",
+      "passwordConfirm": "123123",
+      "name": "murat",
+      "surname": "yıldırım",
+      "role": "user",
+      "favorites": [
+        1,
+        2,
+        3
+      ],
+      "id": 3
     }
   ]
 }

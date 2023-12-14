@@ -7,28 +7,29 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Grid,
   Rating,
   Skeleton,
-  Stack,
   Typography,
 } from '@mui/material';
 import CategoryList from './components/CategoryList';
 import { fetchRecipes, fetchRecipesByCategory } from '../../../store/recipeSlice';
 import { fetchCategories } from '../../../store/categorySlice';
-import { IconButton } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchBar from '@/components/SearchBar';
 import RecipeCard from '@/components/RecipeCard';
+import { ToastContainer, toast } from 'react-toastify';
+import { addFavoriteRecipe, deleteFavoriteRecipe } from '../../../store/userSlice';
 
 const Recipes = () => {
-  const [favorites, setFavorites] = useState([]);
   const router = useRouter();
   const dispatch = useDispatch();
   const { categories, loadingCategories, defaultCategory } = useSelector(
     (state) => state.categories
   );
+  
   const { recipes, loadingRecipes } = useSelector((state) => state.recipes);
   const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
+  const { isLoggedIn, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -41,72 +42,72 @@ const Recipes = () => {
         setSelectedCategory(category);
         dispatch(fetchRecipesByCategory(category));
       }
-      if(category =="Tümü"){
-        dispatch(fetchRecipes(category))
+      if(category === "Tümü") {
+        dispatch(fetchRecipes(category));
       }
     },
     [selectedCategory, dispatch]
   );
 
-
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem('favorites');
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
+  const handleFavoriteToggle = (recipeId) => {
+    if (!isLoggedIn) {
+      toast.error("Giriş yapmadan favorilere ekleme yapamazsınız.");
+    } else {
+      const userId = user.id; 
+      if (isFavorite(recipeId)) {
+        dispatch(deleteFavoriteRecipe({ userId, recipeId }));
+      } else {
+        dispatch(addFavoriteRecipe({ userId, recipeId }));
+      }
     }
-  }, []);
-
-  const handleFavoriteToggle = (id) => {
-    const newFavorites = favorites.includes(id)
-      ? favorites.filter((favoriteId) => favoriteId !== id)
-      : [...favorites, id];
-
-    setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
-  const isFavorite = (id) => favorites.includes(id);
+
+  const isFavorite = (id) => user?.favorites.includes(id);
 
   return (
-    <Stack direction="column" spacing={4} m={5}>
+    <Box mt={10}>
       {loadingCategories ? (
         <Skeleton variant="rectangular" width={206} height={338} />
       ) : (
-        <Stack direction="row" spacing={10}>
-          <Stack>
-            <SearchBar></SearchBar>
+        <Grid container spacing={3}>
+          <Grid marginLeft={7} mr={3} item xs={12} md={2}>
+            <SearchBar />
             <CategoryList
               categories={categories}
               handleCategoryClick={handleCategoryClick}
             />
-          </Stack>
-
-
-          <Stack
-            spacing={{ xs: 1, sm: 3, md: 3 }}
-            direction="row"
-            useFlexGap
-            flexWrap="wrap"
-          >
-            {loadingRecipes ? (
-              Array.from(new Array(8)).map((_, index) => (
-                <Card key={index} sx={{ width: '250px' }}>
-                  <Skeleton variant="rectangular" width="100%" height={150} />
-                  <CardContent>
-                    <Skeleton variant="text" height={140} />
-                    <Skeleton variant="text" width="60%" />
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              recipes.map((recipe) => (
-                <RecipeCard isFavorite={isFavorite} recipe={recipe} handleFavoriteToggle={handleFavoriteToggle}/>
-              ))
-            )}
-          </Stack>
-        </Stack>
+          </Grid>
+          <Grid item xs={12} md={9}>
+            <Grid container spacing={3}>
+              {loadingRecipes ? (
+                Array.from(new Array(8)).map((_, index) => (
+                  <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                    <Card sx={{ width: '100%' }}>
+                      <Skeleton variant="rectangular" width="100%" height={150} />
+                      <CardContent>
+                        <Skeleton variant="text" height={140} />
+                        <Skeleton variant="text" width="60%" />
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))
+              ) : (
+                recipes.map((recipe) => (
+                  <Grid key={recipe.id} item xs={12} sm={6} md={4} lg={3}>
+                    <RecipeCard
+                      isFavorite={isFavorite}
+                      recipe={recipe}
+                      handleFavoriteToggle={handleFavoriteToggle}
+                    />
+                  </Grid>
+                ))
+              )}
+            </Grid>
+          </Grid>
+        </Grid>
       )}
-    </Stack>
+      <ToastContainer position="bottom-right" />
+    </Box>
   );
 };
 

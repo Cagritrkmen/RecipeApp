@@ -12,7 +12,38 @@ const initialState = {
   loadingUserDetails: false,
 };
 
-
+export const addFavoriteRecipe = createAsyncThunk(
+  'user/addFavoriteRecipe',
+  async ({ userId, recipeId }, { rejectWithValue }) => {
+    try {
+      const user = await axios.get(`http://localhost:3001/users/${userId}`);
+      const updatedUser = {
+        ...user.data,
+        favorites: [...user.data.favorites, recipeId],
+      };
+      const response = await axios.put(`http://localhost:3001/users/${userId}`, updatedUser);
+      return response.data;
+    } catch (error) {
+      throw Error(error.response.data.error);
+    }
+  }
+);
+export const deleteFavoriteRecipe = createAsyncThunk(
+  'user/deleteFavoriteRecipe',
+  async ({ userId, recipeId }, { rejectWithValue }) => {
+    try {
+      const user = await axios.get(`http://localhost:3001/users/${userId}`);
+      const updatedUser = {
+        ...user.data,
+        favorites: user.data.favorites.filter(id => id !== recipeId),
+      };
+      const response = await axios.put(`http://localhost:3001/users/${userId}`, updatedUser);
+      return response.data;
+    } catch (error) {
+      throw Error(error.response.data.error);
+    }
+  }
+);
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData, { rejectWithValue }) => {
@@ -38,7 +69,7 @@ export const registerUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'recipes/updateUser',
-  async ({ id, values },{ rejectWithValue }) => {
+  async ({ id, values }, { rejectWithValue }) => {
     const response = await axios.put(`http://localhost:3001/users/${id}`, values);
     return response.data;
   }
@@ -119,6 +150,23 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.loadingUserDetails = false;
         toast.error(`Kullanıcı güncellenemedi`);
+      })
+      .addCase(addFavoriteRecipe.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.error = null;
+        state.loadingUserDetails = false;
+      })
+      .addCase(addFavoriteRecipe.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loadingUserDetails = false;
+      }).addCase(deleteFavoriteRecipe.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.error = null;
+        state.loadingUserDetails = false;
+      })
+      .addCase(deleteFavoriteRecipe.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loadingUserDetails = false;
       });
 
   },
