@@ -5,7 +5,7 @@ import { registerUser } from '../../../store/userSlice';
 import { Button, TextField, Typography, Container, Box } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import validationSchema from './validationSchema';
+import validationSchema from '../../components/validationSchema';
 import { useRouter } from 'next/router';
 
 const Register = () => {

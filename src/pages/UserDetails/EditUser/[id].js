@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import { fetchUserDetails, updateUser } from '../../../../store/userSlice';
-import validationSchema from "../../Register/validationSchema";
+import validationSchema from "../../../components/validationSchema";
 
 
 const EditUser = () => {

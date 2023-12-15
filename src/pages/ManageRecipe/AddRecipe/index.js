@@ -8,7 +8,7 @@ import { fetchCategories } from '../../../../store/categorySlice';
 import { useFormik } from 'formik';
 import { ToastContainer } from 'react-toastify';
 import { addNewRecipe } from '../../../../store/recipeSlice';
-import RecipeSchema from '../recipeSchema';
+import RecipeSchema from '../../../components/recipeSchema';
 
 
 const AddRecipe = () => {

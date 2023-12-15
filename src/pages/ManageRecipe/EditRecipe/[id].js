@@ -6,7 +6,7 @@ import { fetchCategories } from '../../../../store/categorySlice';
 import { Formik } from 'formik';
 import { ToastContainer } from 'react-toastify';
 import { fetchRecipeDetails, updateRecipe } from '../../../../store/recipeSlice';
-import RecipeSchema from '../recipeSchema';
+import RecipeSchema from '../../../components/recipeSchema';
 
 
 const EditRecipe = () => {
