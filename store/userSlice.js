@@ -4,6 +4,10 @@ import { toast } from 'react-toastify';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+const BASE_URL =`http://localhost:3001`;
+const BASE_URL2="https://recipe-app-json.onrender.com";
+
+
 
 
 const initialState = {
@@ -18,12 +22,12 @@ export const addFavoriteRecipe = createAsyncThunk(
   'user/addFavoriteRecipe',
   async ({ userId, recipeId }, { rejectWithValue }) => {
     try {
-      const user = await axios.get(`http://localhost:3001/users/${userId}`);
+      const user = await axios.get(`${BASE_URL2}/users/${userId}`);
       const updatedUser = {
         ...user.data,
         favorites: [...user.data.favorites, recipeId],
       };
-      const response = await axios.put(`http://localhost:3001/users/${userId}`, updatedUser);
+      const response = await axios.put(`${BASE_URL2}/users/${userId}`, updatedUser);
       return response.data;
     } catch (error) {
       throw Error(error.response.data.error);
@@ -34,12 +38,12 @@ export const deleteFavoriteRecipe = createAsyncThunk(
   'user/deleteFavoriteRecipe',
   async ({ userId, recipeId }, { rejectWithValue }) => {
     try {
-      const user = await axios.get(`http://localhost:3001/users/${userId}`);
+      const user = await axios.get(`${BASE_URL2}/users/${userId}`);
       const updatedUser = {
         ...user.data,
         favorites: user.data.favorites.filter(id => id !== recipeId),
       };
-      const response = await axios.put(`http://localhost:3001/users/${userId}`, updatedUser);
+      const response = await axios.put(`${BASE_URL2}/users/${userId}`, updatedUser);
       return response.data;
     } catch (error) {
       throw Error(error.response.data.error);
@@ -50,7 +54,7 @@ export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const existingUsers = await axios.get('http://localhost:3001/users');
+      const existingUsers = await axios.get(`${BASE_URL2}/users`);
       const existingUser = existingUsers.data.find(user => user.username === userData.username);
 
       if (existingUser) {
@@ -58,7 +62,7 @@ export const registerUser = createAsyncThunk(
       }
 
       const response = await axios.post(
-        'http://localhost:3001/users',
+        `${BASE_URL2}/users`,
         userData
       );
 
@@ -72,7 +76,7 @@ export const registerUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'recipes/updateUser',
   async ({ id, values }, { rejectWithValue }) => {
-    const response = await axios.put(`http://localhost:3001/users/${id}`, values);
+    const response = await axios.put(`${BASE_URL2}/users/${id}`, values);
     return response.data;
   }
 );
@@ -82,7 +86,7 @@ export const loginUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/users?username=${userData.username}&password=${userData.password}`
+        `${BASE_URL2}/users?username=${userData.username}&password=${userData.password}`
       );
 
       if (response.data.length === 1) {

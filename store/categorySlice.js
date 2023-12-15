@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const BASE_URL =`http://localhost:3001`;
+const BASE_URL2="https://recipe-app-json.onrender.com";
+
 const initialState = {
   categories: [],
   loadingCategories: false,
@@ -12,7 +15,7 @@ export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async () => {
     const response = await axios.get(
-      'http://localhost:3001/categories'
+      `${BASE_URL2}/categories`
     );
     return response.data;
   }

@@ -2,6 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const BASE_URL =`http://localhost:3001`;
+const BASE_URL2="https://recipe-app-json.onrender.com";
+
+
 const initialState = {
   recipes: [],
   loadingRecipes: false,
@@ -14,7 +18,7 @@ export const fetchRecipesByCategory = createAsyncThunk(
   'recipes/fetchRecipesByCategory',
   async (category) => {
     const response = await axios.get(
-      `http://localhost:3001/recipes?category=${category}`
+      `${BASE_URL2}/recipes?category=${category}`
     );
     return response.data;
   }
@@ -24,7 +28,7 @@ export const fetchRecipes = createAsyncThunk(
   'categories/fetchRecipes',
   async () => {
     const response = await axios.get(
-      'http://localhost:3001/recipes'
+      `${BASE_URL2}/recipes`
     );
     return response.data;
   }
@@ -32,14 +36,14 @@ export const fetchRecipes = createAsyncThunk(
 export const deleteRecipe = createAsyncThunk(
   'recipes/deleteRecipe',
   async (recipeId) => {
-    const response = await axios.delete(`http://localhost:3001/recipes/${recipeId}`);
+    const response = await axios.delete(`${BASE_URL2}/recipes/${recipeId}`);
     return response.data;
   }
 );
 export const addNewRecipe = createAsyncThunk(
   'recipes/addNewRecipe',
   async (recipeData) => {
-    const response = await axios.post('http://localhost:3001/recipes', recipeData);
+    const response = await axios.post(`${BASE_URL2}/recipes`, recipeData);
     return response.data;
   }
 );
@@ -50,7 +54,7 @@ export const fetchRecipeDetails = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/recipes/${id}`);
+        `${BASE_URL2}/recipes/${id}`);
       return response.data;
     } catch (error) {
       rejectWithValue(error.response.data.error)
@@ -63,14 +67,14 @@ export const fetchRecipeDetails = createAsyncThunk(
 export const searchRecipes = createAsyncThunk(
   'search/searchRecipes',
   async (search) => {
-    const response = await axios.get(`http://localhost:3001/recipes?q=${search}`);
+    const response = await axios.get(`${BASE_URL2}/recipes?q=${search}`);
     return response.data;
   }
 );
 export const updateRecipe = createAsyncThunk(
   'recipes/updateRecipe',
   async ({ id, values }) => {
-    const response = await axios.put(`http://localhost:3001/recipes/${id}`, values);
+    const response = await axios.put(`${BASE_URL2}/recipes/${id}`, values);
     return response.data;
   }
 );
