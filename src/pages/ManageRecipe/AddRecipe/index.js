@@ -208,7 +208,7 @@ const AddRecipe = () => {
                                         variant="contained"
                                         color="primary"
                                         onClick={handleAddIngredient}
-                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} 
                                     >
                                         Malzeme Ekle
                                     </Button>
@@ -243,7 +243,7 @@ const AddRecipe = () => {
                                         variant="contained"
                                         color="primary"
                                         onClick={handleAddInstructions}
-                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} // İstediğiniz boşluğu ayarlayabilirsiniz
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} 
                                     >
                                         Yapılacaklar Ekle
                                     </Button>

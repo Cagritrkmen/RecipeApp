@@ -17,7 +17,6 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ' Kalam, sans-serif'
-    // Diğer yazı özelliklerini de burada özelleştirebilirsiniz
   }
 });
 
