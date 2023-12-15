@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "concurrently \"next start\" \"json-server --watch db.json --port 3001\" ",
     "lint": "next lint",
     "db": "json-server --watch db.json --port 3001"
   },
