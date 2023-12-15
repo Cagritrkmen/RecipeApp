@@ -4,10 +4,6 @@ import { useRouter } from 'next/router';
 import {
   Box,
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
   Stack,
   Typography,
 } from '@mui/material';
@@ -25,7 +21,6 @@ const Favorites = () => {
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
-      console.log('storedFavorites', storedFavorites)
       setFavorites(JSON.parse(storedFavorites));
     }
     dispatch(fetchRecipes());
@@ -44,8 +39,7 @@ const Favorites = () => {
   const isFavorite = (id) => user.favorites.includes(id);
 
   const favoriteRecipes = recipes.filter((recipe) => user?.favorites.includes(recipe.id));
-  console.log('recipe', recipes)
-  console.log('favoriteRecipes', favoriteRecipes)
+
   if (!isLoggedIn) {
     return (
       <Box
@@ -58,10 +52,10 @@ const Favorites = () => {
           Lütfen Giriş Yapın
         </Typography>
         <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} width={"300px"}>
-          <Button variant="contained" color="primary" onClick={() => { router.back() }}>
+          <Button variant="contained" color="secondary" onClick={() => { router.back() }}>
             Geri Dön
           </Button>
-          <Button variant="contained" color="primary" onClick={() => { router.push("/Login") }}>
+          <Button variant="contained" color="secondary" onClick={() => { router.push("/Login") }}>
             Giriş Yap
           </Button>
         </Box>
@@ -84,7 +78,7 @@ const Favorites = () => {
       ) : (
         <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
           {favoriteRecipes.map((recipe) => (
-            <RecipeCard isFavorite={isFavorite} recipe={recipe} handleFavoriteToggle={handleFavoriteToggle} />
+            <RecipeCard key={recipe.id} isFavorite={isFavorite} recipe={recipe} handleFavoriteToggle={handleFavoriteToggle} />
           ))}
         </Stack>
       )}

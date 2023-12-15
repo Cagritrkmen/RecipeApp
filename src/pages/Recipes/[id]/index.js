@@ -40,16 +40,16 @@ const RecipeDetails = () => {
     return (
         <Container>
             <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} alignItems={"end"}>
-                <Typography variant="h3" gutterBottom mt={3} color={"white"}>
+                <Typography variant="h3" gutterBottom mt={3} color={"black"}>
                     {recipeDetails.title}
                 </Typography>
-                <Button style={{height:"50px", marginRight:"40px"}}  variant="contained" color="primary" onClick={() => { router.back() }}>
+                <Button style={{height:"50px", marginRight:"40px" ,color:"black"}} variant="contained" color="secondary" onClick={() => { router.back() }}>
                     Geri Dön
                 </Button>
             </Box>
 
 
-            <Grid color={"white"} border={4} borderRadius={10} mt={1} container spacing={4} >
+            <Grid color={"black"} border={4} borderRadius={10} mt={1} container spacing={4} >
                 <Grid item xs={12} sm={4} borderRight={4} pb={3} pl={4} pr={4}>
                     <Card>
                         <CardMedia
@@ -65,7 +65,7 @@ const RecipeDetails = () => {
                     <Typography variant="h5" gutterBottom>
                         İçindekiler:
                     </Typography>
-                    <Divider style={{ borderWidth: "3px", borderColor: "white", width: "120px" }} />
+                    <Divider style={{ borderWidth: "3px", borderColor: "third", width: "120px" }} />
                     <List>
                         {recipeDetails.ingredients ? (
                             recipeDetails.ingredients.map((ingredient, index) => (
@@ -91,7 +91,7 @@ const RecipeDetails = () => {
                     <Typography variant="h5" gutterBottom>
                         Yapılacaklar Listesi:
                     </Typography>
-                    <Divider style={{ borderWidth: "3px", borderColor: "white", width: "210px" }} />
+                    <Divider style={{ borderWidth: "3px", borderColor: "third", width: "210px" }} />
                     <List >
                         {recipeDetails.instructions ? (
                             recipeDetails.instructions.map((instruction, index) => (

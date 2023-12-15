@@ -19,9 +19,8 @@ const RecipeCard = ({ handleFavoriteToggle, isFavorite, recipe }) => {
   return (
     <Card
       key={recipe.id}
-      sx={{ width: 230, height: 380 }}
+      sx={{ width: 250, height: 380 }}
     >
-      {/* Recipe Image */}
       <CardMedia
         component="img"
         height="150"
@@ -29,14 +28,12 @@ const RecipeCard = ({ handleFavoriteToggle, isFavorite, recipe }) => {
         alt={recipe.title}
       />
       <CardContent>
-        {/* Recipe Title */}
         <Typography gutterBottom variant="h6" component="div">
           {recipe.title}
         </Typography>
-        {/* Recipe Difficulty */}
         <Typography variant='body2'>Zorluk: {recipe.difficulty}</Typography>
-        {/* Recipe Category */}
-        {recipe.category}
+        <Typography>{recipe.category}</Typography>
+        
         <Box
           sx={{
             display: 'flex',
@@ -44,28 +41,25 @@ const RecipeCard = ({ handleFavoriteToggle, isFavorite, recipe }) => {
             mb: 2,
           }}
         >
-          {/* Recipe Rating */}
-          <Rating name="read-only" value={recipe.rating} readOnly />
+          <Rating  name="read-only" value={recipe.rating} readOnly />
           <Typography variant="body2" color="text.secondary">
             ({recipe.rating})
           </Typography>
         </Box>
       </CardContent>
 
-      {/* Buttons Section */}
+
       <Stack direction="row" justifyContent="space-around" mb={3}>
-        {/* Detail Button */}
         <Button
+         sx={{backgroundColor:"#C69774", height:"50px"} }
           variant="contained"
-          color="primary"
           size="large"
           onClick={() => router.push(`/Recipes/${recipe.id}`)}
         >
           Detaya Git
         </Button>
 
-        {/* Favorite Button */}
-        <IconButton
+        <IconButton 
           aria-label="add to favorites"
           onClick={() => handleFavoriteToggle(recipe.id)}
         >

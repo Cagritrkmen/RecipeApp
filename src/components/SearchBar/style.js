@@ -4,7 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 export const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: 'aliceblue',
+    backgroundColor: '#F8DFD4',
     marginRight: theme.spacing(2),
     marginBottom:"50px",
     marginLeft: 0,

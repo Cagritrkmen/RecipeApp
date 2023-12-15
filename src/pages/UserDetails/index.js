@@ -11,13 +11,13 @@ const UserDetails = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-   
+
     dispatch(logoutUser());
     toast.success("Başarıyla çıkış yapıldı. Login sayfasına yönlendiriliyorsunuz.")
-    setTimeout(()=>{
+    setTimeout(() => {
       router.push('/Login');
-    },2000)
-    
+    }, 2000)
+
   };
 
   const isAdmin = user && user.user && user.user.role === 'admin';
@@ -35,7 +35,7 @@ const UserDetails = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
           <Button
             variant="contained"
-            color="primary"
+            color="third"
             onClick={() => router.push(`/UserDetails/EditUser/${user.user.id}`)}
             style={{ marginRight: '10px' }}
           >
@@ -43,7 +43,7 @@ const UserDetails = () => {
           </Button>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             onClick={handleLogout}
             style={{ marginRight: '10px' }}
           >
@@ -53,14 +53,15 @@ const UserDetails = () => {
       )}
 
       {isAdmin && (
-        <Paper  sx={{ padding: '20px', maxWidth: '450px', width: '100%', marginTop:"25px" }}>
+        <Paper sx={{ padding: '20px', maxWidth: '450px', width: '100%', marginTop: "25px" }}>
           <Typography variant="h5" align="center">Admin Paneli</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-            <Button variant="contained" onClick={() => router.push("/ManageRecipe")} sx={{ mr: 2 }}>Tarifleri Yönet</Button>
+            <Button variant="contained" color='secondary' onClick={() => router.push("/ManageRecipe")} sx={{ mr: 2 }}>Tarifleri Yönet</Button>
           </Box>
         </Paper>
       )}
-      <ToastContainer position='bottom-right' />
+      <ToastContainer progressClassName="toastProgress"
+        bodyClassName="toastBody" position='bottom-right' />
     </Box>
   );
 };

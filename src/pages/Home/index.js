@@ -23,15 +23,15 @@ const Home = () => {
       }}
     >
       <Box sx={{ textAlign: 'center', color: 'white' }}>
-        <Typography variant="h3" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom>
           Yemek Tarifleri Sitesine Hoş Geldiniz
         </Typography>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           size="large"
           onClick={handleRecipeClick}
-          sx={{ marginTop: '30px' }}
+          sx={{ marginTop: '30px', color:"black ", fontWeight:"semi-bold" }}
         >
           Yemek Tariflerini Gör
         </Button>

@@ -9,6 +9,7 @@ body {
   overflow-x: hidden;
   margin:0;
   border-radius: 0;
-  background-color: rgb(87, 51, 5);
+  background-color: #C69774;
 }
+
 @import 'react-toastify/dist/ReactToastify.css';

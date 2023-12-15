@@ -189,6 +189,6 @@ const userSlice = createSlice({
 });
 
 export const { logoutUser } = userSlice.actions;
-export const persistedUserReducer = persistReducer(persistConfig, userSlice.reducer); // persistReducer'ı userReducer üzerine uygulayın
+export const persistedUserReducer = persistReducer(persistConfig, userSlice.reducer); 
 
-export default persistedUserReducer; // default olarak userReducer'ı export edin
+export default persistedUserReducer; 

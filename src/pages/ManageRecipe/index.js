@@ -39,7 +39,7 @@ const ManageRecipe = () => {
         <Box display="flex"  justifyContent="flex-end" mb={2}>
           <Button
             variant="contained"
-            color="primary"
+            color="third"
             onClick={() => router.push('/ManageRecipe/AddRecipe')}
           >
             Tarif Ekle
@@ -63,7 +63,7 @@ const ManageRecipe = () => {
 
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() => router.push(`/ManageRecipe/EditRecipe/${recipe.id}`)}
                       style={{ marginRight: '10px' }}
                     >
@@ -71,7 +71,7 @@ const ManageRecipe = () => {
                     </Button>
                     <Button
                       variant="contained"
-                      color="secondary"
+                      color="primary"
                       onClick={() => handleDelete(recipe.id)}
                     >
                       Delete
