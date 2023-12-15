@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import {
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  ListItemButton,
-} from '@mui/material';
-import { StyledCategoryListStack } from './styledCategoryList';
+import { Divider, List, ListItem, ListItemText, Typography, ListItemButton, Stack, styled } from '@mui/material';
 
+const StyledCategoryListStack = styled(Stack)`
+  border-radius: 4px;
+  background: #F8DFD4;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: fit-content;
+`;
 
 const CategoryList = ({ categories, handleCategoryClick }) => {
   return (
