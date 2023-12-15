@@ -5,13 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import { fetchUserDetails, updateUser } from '../../../../store/userSlice';
-import validationSchema from "../../../components/validationSchema";
+import * as Yup from 'yup';
+
 
 
 const EditUser = () => {
     const router = useRouter();
     const { id } = router.query;
-   
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required('İsim zorunlu'),
+        surname: Yup.string().required('Soyisim zorunlu'),
+        username: Yup.string().required('Kullanıcı adı zorunlu'),
+        email: Yup.string().email('Geçersiz email').required('Email girmek zorunlu'),
+        password: Yup.string().required('Şifre girmek zorunlu').min(6, 'Şifre en az 6 karakter uzunluğunda olmalıdır'),
+        passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'Şifreler aynı değil'),
+
+    });
 
 
     const dispatch = useDispatch();
@@ -22,18 +31,18 @@ const EditUser = () => {
 
     const handleSubmit = async (values) => {
         try {
-          await dispatch(updateUser({ id, values }));
-          toast.success('Kullanıcı başarıyla güncellendi.');
+            await dispatch(updateUser({ id, values }));
+            toast.success('Kullanıcı başarıyla güncellendi.');
         } catch (error) {
-          toast.error(error.payload || 'Kullanıcı güncellenemedi.');
-          console.error('Bir hata oluştu:', error);
+            toast.error(error.payload || 'Kullanıcı güncellenemedi.');
+            console.error('Bir hata oluştu:', error);
         }
-      };
-      
-    
+    };
 
 
-    if (loadingUserDetails ) {
+
+
+    if (loadingUserDetails) {
         return <Box>Loading</Box>
     }
 
@@ -53,13 +62,13 @@ const EditUser = () => {
                                 username: user?.username || '',
                                 email: user?.email || '',
                                 password: user?.password || '',
-                                passwordConfirm: user?.passwordConfirm ||'',
+                                passwordConfirm: user?.passwordConfirm || '',
                                 name: user?.name || '',
                                 surname: user?.surname || '',
                                 role: user?.role || "",
-                                favorites: user?.favorites ||"",
-                              }}
-                              
+                                favorites: user?.favorites || "",
+                            }}
+
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
@@ -73,7 +82,7 @@ const EditUser = () => {
                                 setFieldValue,
                             }) => (
                                 <form onSubmit={handleSubmit}>
-                                    
+
 
                                     <Field name="email">
                                         {({ field, form }) => (
@@ -126,7 +135,7 @@ const EditUser = () => {
                                                 fullWidth
                                                 value={values.password}
                                                 label="Şifre"
-                                                
+
                                                 error={form.errors.password && form.touched.password}
                                                 helperText={<ErrorMessage name="password" />}
                                             />
@@ -140,7 +149,7 @@ const EditUser = () => {
                                                 fullWidth
                                                 value={values.passwordConfirm}
                                                 label="Şifre Tekrar"
-                                                
+
                                                 error={form.errors.passwordConfirm && form.touched.passwordConfirm}
                                                 helperText={<ErrorMessage name="passwordConfirm" />}
                                             />
