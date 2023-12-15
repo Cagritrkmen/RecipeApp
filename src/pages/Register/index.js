@@ -5,19 +5,31 @@ import { registerUser } from '../../../store/userSlice';
 import { Button, TextField, Typography, Container, Box } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import validationSchema from '../../components/validationSchema';
 import { useRouter } from 'next/router';
+import * as Yup from 'yup';
 
 const Register = () => {
   const dispatch = useDispatch();
+ 
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('İsim zorunlu'),
+    surname: Yup.string().required('Soyisim zorunlu'),
+    username: Yup.string().required('Kullanıcı adı zorunlu'),
+    email: Yup.string().email('Geçersiz email').required('Email girmek zorunlu'),
+    password: Yup.string().required('Şifre girmek zorunlu').min(6, 'Şifre en az 6 karakter uzunluğunda olmalıdır'),
+    passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'Şifreler aynı değil'),
+
+  });
+
 
   const initialValues = {
     username: '',
     email: '',
     password: '',
     passwordConfirm: '',
-    name:"",
-    surname:"",
+    name: "",
+    surname: "",
     role: 'user',
     favorites: [],
   };
@@ -33,10 +45,10 @@ const Register = () => {
 
   useEffect(() => {
     if (isRegister) {
-      setTimeout(()=>{
+      setTimeout(() => {
         router.push('/Login');
-      },2000)
-      
+      }, 2000)
+
     }
   }, [isRegister, router]);
 
@@ -147,7 +159,7 @@ const Register = () => {
             </Form>
           )}
         </Formik>
-        <ToastContainer position='bottom-right' /> 
+        <ToastContainer position='bottom-right' />
       </Box>
     </Container>
   );

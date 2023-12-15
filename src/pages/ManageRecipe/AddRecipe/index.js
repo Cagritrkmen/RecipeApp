@@ -2,16 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../../../../store/categorySlice';
 import { useFormik } from 'formik';
 import { ToastContainer } from 'react-toastify';
 import { addNewRecipe } from '../../../../store/recipeSlice';
-import RecipeSchema from '../../../components/recipeSchema';
+import * as Yup from 'yup';
 
 
 const AddRecipe = () => {
+
+    const RecipeSchema = Yup.object().shape({
+        title: Yup.string().required('Başlık gereklidir'),
+        category: Yup.string().required('Kategori seçmek zorunludur'),
+        difficulty: Yup.string().required('Zorluk seçmek zorunludur'),
+        ingredients: Yup.array()
+            .of(Yup.string().required('Malzeme gereklidir'))
+            .min(1, 'En az 1 malzeme eklemelisiniz'),
+        instructions: Yup.array()
+            .of(Yup.string().required('Malzeme gereklidir'))
+            .min(1, 'En az 1 malzeme eklemelisiniz'),
+        rating: Yup.string().required('Değerlendirme yapmak zorunludur'),
+        image: Yup.string().required('Resim yolu eklemek zorunludur'),
+    });
     const router = useRouter();
     const dispatch = useDispatch();
     const { categories } = useSelector((state) => state.categories);
@@ -85,14 +98,14 @@ const AddRecipe = () => {
         <Container>
             <Box
                 sx={{
-                    marginTop:"20px",
-                    backgroundColor: '#fff', 
-                    padding: '10px 50px', 
-                    borderRadius: '20px', 
+                    marginTop: "20px",
+                    backgroundColor: '#fff',
+                    padding: '10px 50px',
+                    borderRadius: '20px',
                 }}
             >
                 <Stack spacing={2}>
-                    <Typography variant="h4"  component="h1">
+                    <Typography variant="h4" component="h1">
                         Tarif Ekle
                         <form onSubmit={formik.handleSubmit}>
                             <TextField
@@ -208,7 +221,7 @@ const AddRecipe = () => {
                                         variant="contained"
                                         color="primary"
                                         onClick={handleAddIngredient}
-                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} 
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }}
                                     >
                                         Malzeme Ekle
                                     </Button>
@@ -243,7 +256,7 @@ const AddRecipe = () => {
                                         variant="contained"
                                         color="primary"
                                         onClick={handleAddInstructions}
-                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }} 
+                                        style={{ marginLeft: '20px', width: "240px", height: "52px" }}
                                     >
                                         Yapılacaklar Ekle
                                     </Button>

@@ -6,10 +6,26 @@ import { fetchCategories } from '../../../../store/categorySlice';
 import { Formik } from 'formik';
 import { ToastContainer } from 'react-toastify';
 import { fetchRecipeDetails, updateRecipe } from '../../../../store/recipeSlice';
-import RecipeSchema from '../../../components/recipeSchema';
+import * as Yup from 'yup';
+
+
 
 
 const EditRecipe = () => {
+  
+    const RecipeSchema = Yup.object().shape({
+        title: Yup.string().required('Başlık gereklidir'),
+        category: Yup.string().required('Kategori seçmek zorunludur'),
+        difficulty: Yup.string().required('Zorluk seçmek zorunludur'),
+        ingredients: Yup.array()
+            .of(Yup.string().required('Malzeme gereklidir'))
+            .min(1, 'En az 1 malzeme eklemelisiniz'),
+        instructions: Yup.array()
+            .of(Yup.string().required('Malzeme gereklidir'))
+            .min(1, 'En az 1 malzeme eklemelisiniz'),
+        rating: Yup.string().required('Değerlendirme yapmak zorunludur'),
+        image: Yup.string().required('Resim yolu eklemek zorunludur'),
+    });
     const router = useRouter();
     const { id } = router.query;
     console.log('id', id)
@@ -60,7 +76,7 @@ const EditRecipe = () => {
                 borderRadius: '20px',
             }}>
                 <Stack spacing={2}>
-                <Typography variant="h4" component="h1">Tarif Güncelle
+                    <Typography variant="h4" component="h1">Tarif Güncelle
                         <Formik
                             initialValues={{
                                 title: recipeDetails?.title || '',
