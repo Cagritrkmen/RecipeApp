@@ -26,7 +26,3 @@ Bu uygulama, yemek tarifleri üzerine geliştirilmiş bir mobil uygulamadır. Uy
     ```
 
 Bu komutlar, uygulamayı başlatmanız ve sahte bir veritabanı üzerinde istekler yapmanızı sağlayacaktır.
-
-## Katkıda Bulunma
-
-Eğer bu projeye katkıda bulunmak isterseniz, lütfen bir pull request açın. Her türlü katkı ve öneriye açığız!
