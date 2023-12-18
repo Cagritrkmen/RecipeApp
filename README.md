@@ -26,3 +26,9 @@ Bu uygulama, yemek tarifleri üzerine geliştirilmiş bir mobil uygulamadır. Uy
     ```
 
 Bu komutlar, uygulamayı başlatmanız ve sahte bir veritabanı üzerinde istekler yapmanızı sağlayacaktır.
+
+
+## Uygulama Görünümü
+
+![Alt Text](https://github.com/Cagritrkmen/RecipeApp/blob/master/public/recipeApp.gif)
+
