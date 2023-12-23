@@ -26,3 +26,6 @@ Bu uygulama, yemek tarifleri üzerine geliştirilmiş bir mobil uygulamadır. Uy
     ```
 
 Bu komutlar, uygulamayı başlatmanız ve sahte bir veritabanı üzerinde istekler yapmanızı sağlayacaktır.
+
+
+![Alt Text](/public/logo.png.gif)

@@ -70,15 +70,15 @@ const Recipes = () => {
         <Skeleton variant="rectangular" width={206} height={338} />
       ) : (
         <Grid container spacing={3}>
-          <Grid marginLeft={7} mr={3} item xs={12} md={2}>
+          <Grid marginLeft={7} mr={3} item xs={12} md={2}  xl={2}>
             <SearchBar />
             <CategoryList
               categories={categories}
               handleCategoryClick={handleCategoryClick}
             />
           </Grid>
-          <Grid item xs={12} md={9}>
-            <Grid container spacing={3}>
+          <Grid marginLeft={"60px"} item xs={12} md={8}>
+            <Grid   container spacing={3}>
               {loadingRecipes ? (
                 Array.from(new Array(8)).map((_, index) => (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3}>

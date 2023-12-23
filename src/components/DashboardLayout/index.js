@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
@@ -9,16 +10,26 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 import logo from "../../../public/logo.png";
 
 function DashboardLayout({ children }) {
     const router = useRouter();
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleProfileClick = () => {
-
         router.push(`/UserDetails`);
+    };
+
+    const handleMenuClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
     };
 
     return (
@@ -45,8 +56,6 @@ function DashboardLayout({ children }) {
                         >
                             <Image src={logo} alt="My Logo" width={60} height={60} priority />
                         </Typography>
-
-
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Button
@@ -97,6 +106,34 @@ function DashboardLayout({ children }) {
                                     </Button>
                                 </>
                             )}
+                        </Box>
+
+                        <Box sx={{ display: { xs: 'block', md: 'none' }, ml: 'auto' } }>
+                            <IconButton
+                                size="large"
+                                edge="end"
+                                color="inherit"
+                                aria-label="menu"
+                                onClick={handleMenuClick}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={() => router.push(`/Recipes`)}>Yemek Tarifleri</MenuItem>
+                                <MenuItem onClick={() => router.push(`/Favorites`)}>Favoriler</MenuItem>
+                                {isLoggedIn ? (
+                                    <MenuItem onClick={handleProfileClick}>Profil</MenuItem>
+                                ) : (
+                                    <>
+                                        <MenuItem onClick={() => router.push(`/Login`)}>Giriş Yap</MenuItem>
+                                        <MenuItem onClick={() => router.push(`/Register`)}>Kayıt Ol</MenuItem>
+                                    </>
+                                )}
+                            </Menu>
                         </Box>
                     </Toolbar>
                 </Container>

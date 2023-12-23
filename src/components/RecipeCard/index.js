@@ -19,7 +19,8 @@ const RecipeCard = ({ handleFavoriteToggle, isFavorite, recipe }) => {
   return (
     <Card
       key={recipe.id}
-      sx={{ width: 250, height: 380 }}
+      sx={{ width: 250, height: 380}}
+      style={{ margin: '25px' }}
     >
       <CardMedia
         component="img"
