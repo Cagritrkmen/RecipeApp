@@ -29,4 +29,4 @@ Bu komutlar, uygulamayı başlatmanız ve sahte bir veritabanı üzerinde istekl
 
 ## Proje Arayüzü
 
-![gif](/public/logo.png.gif)
+![gif](/public/recipeApp.gif)
